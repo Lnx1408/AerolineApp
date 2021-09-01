@@ -3,12 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace CapaAccesoDatos
 {
     public class ClsManejadorDestinos
     {
         List<ClsDatosDestino> datosDestinos = new List<ClsDatosDestino>();
+        public MySqlConnection abrirConexionMySQL()
+        {
+            MySqlConnection conexion = new MySqlConnection();
+            try
+            {
+                string ConexionSQL = "server = localhost; port = 3306; user = root; pwd = 12345; database = proyectoaerolinea;";
+                conexion.ConnectionString = ConexionSQL;
+                //SqlConnection conexion = new SqlConnection(ConexionSQL);
+                conexion.Open();
+                Console.WriteLine("Se ha abierto la conexión con la base de datos.");
+
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Ha ocurrido un error al inicar la base de datos: " + e);
+            }
+            return conexion;
+        }
+        public MySqlConnection cerrarConexionMySQL(MySqlConnection conexion)
+        {
+            conexion.Close();
+            MessageBox.Show("Se ha cerrado la conexion con la base de datos.");
+
+            return conexion;
+
+        }
 
 
         public String insertarDestino(List<ClsParametrosDestino> lst, String pais, String nombreAeropuerto) {
@@ -80,7 +108,6 @@ namespace CapaAccesoDatos
         public List<Object> listar_Pais()
         {
             List<Object> lstDestino = new List<Object>();
-
             foreach (var destino in datosDestinos)
             {
                 var tmp = new

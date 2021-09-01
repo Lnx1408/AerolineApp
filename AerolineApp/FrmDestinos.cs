@@ -31,7 +31,6 @@ namespace AerolineApp
         public void LimpiarCeldas() {
             txtADestino.Text = "";
             txtCiudad.Text = "";
-            txtDetalleDireccion.Text = "";
             txtPais.Text = "";
             
 
@@ -59,7 +58,7 @@ namespace AerolineApp
                     destino.Pais = txtPais.Text;
                     destino.Ciudad = txtCiudad.Text;
                     destino.NombreAeropuerto = txtADestino.Text;
-                    destino.DetalleDireccion = txtDetalleDireccion.Text;
+                    //destino.DetalleDireccion = txtDetalleDireccion.Text;
                     msj = destino.registrarDestino(varPais, txtADestino.Text);
                     int Numero = int.Parse(txtNDestino.Text) + 1;
                     txtNDestino.Text = Numero.ToString();
