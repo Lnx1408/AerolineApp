@@ -19,6 +19,8 @@ namespace AerolineApp
         {
             InitializeComponent();
             txtPais.Focus();
+            List<Object> ndestinos = destino.MostrarDestino();
+            txtNDestino.Text = ndestinos.Count().ToString();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -41,8 +43,7 @@ namespace AerolineApp
             destino.NumeroDestino = int.Parse(txtNDestino.Text);
 
             String msj = "";
-            String varPais = txtPais.Text.Trim();
-
+            
             if (txtPais.Text.Equals(""))
             {
                 msj = "Todos los campos deben ser ingresados";
@@ -58,14 +59,16 @@ namespace AerolineApp
                     destino.Pais = txtPais.Text;
                     destino.Ciudad = txtCiudad.Text;
                     destino.NombreAeropuerto = txtADestino.Text;
-                    
-                    destino.Fecha = monthCalendarFechaLlegada.SelectionStart.ToString();
+                    destino.Fecha = TimePickerSalida.Value.ToShortDateString() +" "+TimePickerSalida.Value.ToShortTimeString();
+                    MessageBox.Show(destino.Fecha);
+                    //destino.Fecha = monthCalendarFechaLlegada.SelectionEnd.ToShortDateString();
                     //destino.DetalleDireccion = txtDetalleDireccion.Text;
 
-                    msj = destino.registrarDestino(varPais, txtADestino.Text);
-                    int Numero = int.Parse(txtNDestino.Text) + 1;
-                    txtNDestino.Text = Numero.ToString();
-
+                    msj = destino.registrarDestino();
+                    if (msj.Equals("Registrado con éxito, 1")) {
+                        int Numero = int.Parse(txtNDestino.Text) + 1;
+                        txtNDestino.Text = Numero.ToString();
+                    }
 
                     MessageBox.Show(msj);
 
@@ -82,7 +85,7 @@ namespace AerolineApp
         
         private void btConsultar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(monthCalendarFechaLlegada.SelectionEnd.ToLongDateString());
+            //MessageBox.Show(monthCalendarFechaLlegada.SelectionEnd.ToShortDateString());
             
             frmDestinoConsultar destinoConsultar = new frmDestinoConsultar(destino, this);
             this.Hide();

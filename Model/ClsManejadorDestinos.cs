@@ -39,7 +39,7 @@ namespace CapaAccesoDatos
         }
 
 
-        public String insertarDestino(List<ClsParametrosDestino> lst, String pais, String nombreAeropuerto) {
+        public String insertarDestino(List<ClsParametrosDestino> lst) {
             String msj = "";
             try
             {
@@ -47,7 +47,7 @@ namespace CapaAccesoDatos
 
                 string query = "INSERT INTO destino " +
                     "(idDestino, lugarDestino, Aeropuerto, Ciudad, fechaDestino)" +
-                    " VALUES (@idDestino, @lugarDestino, @Aeropuerto, @Ciudad, STR_TO_DATE( @fechaDestino, '%d/%m/%Y %H:%M:%S' ) )";
+                    " VALUES (@idDestino, @lugarDestino, @Aeropuerto, @Ciudad, str_to_date(@fechaDestino, '%d/%m/%Y %H:%i'))";
                 MySqlCommand command = new MySqlCommand(query, conexion);
                 //valores para cada parámetro dado en el query
                 command.Parameters.AddWithValue("@idDestino", lst[0].NumeroDestino);
@@ -56,7 +56,7 @@ namespace CapaAccesoDatos
                 command.Parameters.AddWithValue("@Ciudad", lst[0].Ciudad);
                 command.Parameters.AddWithValue("@fechaDestino", lst[0].Fecha);
                 //command.ExecuteNonQuery();
-                int t = Convert.ToInt32(command.ExecuteScalar());
+                int t = command.ExecuteNonQuery();
                 msj = "Registrado con éxito, " + t;
                 cerrarConexion(conexion);
             }
@@ -67,13 +67,13 @@ namespace CapaAccesoDatos
             return msj;
         }
 
-        public String EliminarDestino(List<ClsParametrosDestino> lst, int NDestino)
+        public String EliminarDestino(int NDestino)
         {
             String msj = "";
             try
             {
                 MySqlConnection conexion = abrirConexion();
-                string cadena = "DELETE FROM destini WHERE idDestino = " + NDestino;
+                string cadena = "DELETE FROM destino WHERE idDestino = " + NDestino;
                 MySqlCommand command = new MySqlCommand(cadena, conexion);
                 int resultado = Convert.ToInt32(command.ExecuteScalar());
                 msj = "Destino eliminado con éxito, " + resultado;
@@ -117,7 +117,7 @@ namespace CapaAccesoDatos
             try
             {
                 MySqlConnection conexion = abrirConexion();
-                String actualizar = "update destino set idDestino=@idDestino, lugarDestino=@ lugarDestino, Aeropuerto=@ Aeropuerto, Ciudad=@ Ciudad, fechaDestino=@ fechaDestino where idDestino = " + idDestino;
+                String actualizar = "update destino set lugarDestino=@ lugarDestino, Aeropuerto=@ Aeropuerto, Ciudad=@ Ciudad, fechaDestino=@ fechaDestino where idDestino = " + idDestino;
                 MySqlCommand comando = new MySqlCommand(actualizar, conexion);
                 //comando.Parameters.AddWithValue("@idDestino", idDestino);
                 comando.Parameters.AddWithValue("@lugarDestino", lugarDestino);

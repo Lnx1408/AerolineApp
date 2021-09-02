@@ -58,7 +58,7 @@ namespace CapaLogicaNegocio
 
         ClsManejadorDestinos manejadorDestinos = new ClsManejadorDestinos();
 
-        public String registrarDestino(String pais, String nombreAeropuerto)
+        public String registrarDestino()
         {
             string msj = "";
 
@@ -68,7 +68,7 @@ namespace CapaLogicaNegocio
             {
                 
                 lst.Add(new ClsParametrosDestino(NumeroDestino, Pais, Ciudad, NombreAeropuerto, Fecha));
-                msj = manejadorDestinos.insertarDestino(lst, pais, nombreAeropuerto);
+                msj = manejadorDestinos.insertarDestino(lst);
             }
             catch (Exception ex)
             {
@@ -83,20 +83,8 @@ namespace CapaLogicaNegocio
         {
             string msj = "";
 
-            List<ClsParametrosDestino> lst = new List<ClsParametrosDestino>();
-
-            try
-            {
-                lst.Add(new ClsParametrosDestino(NumeroDestino, Pais, Ciudad, NombreAeropuerto, Fecha));
-                msj = manejadorDestinos.EliminarDestino(lst, NDestino);
-            }
-            catch (Exception ex)
-            {
-                msj = "Error a eliminar los datos";
-                return msj;
-                throw ex;
-            }
-
+                msj = manejadorDestinos.EliminarDestino(NDestino);
+            
             return msj;
         }
 

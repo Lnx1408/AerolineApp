@@ -40,11 +40,11 @@ namespace AerolineApp
             {
                 System.Type type = destino.GetType();
 
-                int NumeroDestino = (int)type.GetProperty("numeroDestino").GetValue(destino);
-                String Pais = (String)type.GetProperty("pais").GetValue(destino);
-                String Ciudad = (String)type.GetProperty("ciudad").GetValue(destino);
-                String NombreAeropuerto = (String)type.GetProperty("nombreAeropuerto").GetValue(destino);
-                String fecha = (String)type.GetProperty("detalleDireccion").GetValue(destino);
+                int NumeroDestino = (int)type.GetProperty("idDestino").GetValue(destino);
+                String Pais = (String)type.GetProperty("lugarDestino").GetValue(destino);
+                String Ciudad = (String)type.GetProperty("Ciudad").GetValue(destino);
+                String NombreAeropuerto = (String)type.GetProperty("Aeropuerto").GetValue(destino);
+                String fecha = (String)type.GetProperty("fechaDestino").GetValue(destino);
 
                 dgv_Destinos.Rows.Add(NumeroDestino, Pais, Ciudad, NombreAeropuerto, fecha);
 
@@ -70,15 +70,15 @@ namespace AerolineApp
             foreach (var destino in lst_destinos_tmp)
             {
                 System.Type type = destino.GetType();
-                String Pais = (String)type.GetProperty("pais").GetValue(destino);
+                String Pais = (String)type.GetProperty("lugarDestino").GetValue(destino);
                 if (Pais.Equals(txtPais.Text))
                 {
-                    int NumeroDestino = (int)type.GetProperty("numeroDestino").GetValue(destino);
-                    String Ciudad = (String)type.GetProperty("ciudad").GetValue(destino);
-                    String NombreAeropuerto = (String)type.GetProperty("nombreAeropuerto").GetValue(destino);
-                    String DetalleDireccion = (String)type.GetProperty("detalleDireccion").GetValue(destino);
+                    int NumeroDestino = (int)type.GetProperty("idDestino").GetValue(destino);
+                    String Ciudad = (String)type.GetProperty("Ciudad").GetValue(destino);
+                    String NombreAeropuerto = (String)type.GetProperty("Aeropuerto").GetValue(destino);
+                    String fecha = (String)type.GetProperty("fechaDestino").GetValue(destino);
 
-                    dgv_Destinos.Rows.Add(NumeroDestino, Pais, Ciudad, NombreAeropuerto, DetalleDireccion);
+                    dgv_Destinos.Rows.Add(NumeroDestino, Pais, Ciudad, NombreAeropuerto, fecha);
                 }
             }
         }
