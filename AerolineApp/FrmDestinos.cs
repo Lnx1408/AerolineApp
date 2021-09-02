@@ -19,8 +19,7 @@ namespace AerolineApp
         {
             InitializeComponent();
             txtPais.Focus();
-            List<Object> ndestinos = destino.MostrarDestino();
-            txtNDestino.Text = ndestinos.Count().ToString();
+            txtNDestino.Text = destino.obtenerVmax();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

@@ -111,6 +111,21 @@ namespace CapaAccesoDatos
             cerrarConexion(conexion);
             return lstDestino;
         }
+        public string ObtenerIDMax()
+        {
+            String NMax="0";
+
+            MySqlConnection conexion = abrirConexion();
+            string cadena = "select max(idDestino)+1 as numero from destino;";
+            MySqlCommand comando = new MySqlCommand(cadena, conexion);
+            MySqlDataReader registros = comando.ExecuteReader();
+            while (registros.Read())
+            {
+                NMax = registros["numero"].ToString();
+            }
+            cerrarConexion(conexion);
+            return NMax;
+        }
         public String ModificarDestino(int idDestino, string lugarDestino,string Aeropuerto, string Ciudad,string fechaDestino)
         {
             String Msj = "";

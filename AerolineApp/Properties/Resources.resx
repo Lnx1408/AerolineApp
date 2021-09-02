@@ -145,6 +145,9 @@
   <data name="reserva1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\reserva1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Avanzar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Avanzar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Flota03" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\Flota03.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -153,6 +156,9 @@
   </data>
   <data name="Consultar_avion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\Consultar_avion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consultar_mapas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Consultar_mapas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Flota05" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\Flota05.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -171,9 +177,6 @@
   </data>
   <data name="destino" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\destino.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Flota08" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\Flota08.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="modeloAvion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\modeloAvion.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,8 +202,8 @@
   <data name="Volver1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\Volver1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Avanzar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\Avanzar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Flota08" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Flota08.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Flota06" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\Flota06.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,7 +211,7 @@
   <data name="compra" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\compra.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Consultar_mapas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\Consultar_mapas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ModificarIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\modificaricon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

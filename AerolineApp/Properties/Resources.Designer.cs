@@ -283,6 +283,16 @@ namespace AerolineApp.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ModificarIcon {
+            get {
+                object obj = ResourceManager.GetObject("ModificarIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap plane3 {
             get {
                 object obj = ResourceManager.GetObject("plane3", resourceCulture);

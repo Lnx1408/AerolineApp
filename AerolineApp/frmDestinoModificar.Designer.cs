@@ -64,7 +64,7 @@ namespace AerolineApp
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(30)))));
             this.groupBox1.Location = new System.Drawing.Point(169, 71);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(458, 278);
+            this.groupBox1.Size = new System.Drawing.Size(458, 250);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "INGRESAR DATOS";
@@ -191,9 +191,9 @@ namespace AerolineApp
             this.btConsultar.FlatAppearance.BorderSize = 0;
             this.btConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btConsultar.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btConsultar.Image = global::AerolineApp.Properties.Resources.ConsultarIcon;
+            this.btConsultar.Image = global::AerolineApp.Properties.Resources.ModificarIcon;
             this.btConsultar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btConsultar.Location = new System.Drawing.Point(259, 362);
+            this.btConsultar.Location = new System.Drawing.Point(260, 343);
             this.btConsultar.Name = "btConsultar";
             this.btConsultar.Size = new System.Drawing.Size(107, 74);
             this.btConsultar.TabIndex = 12;
@@ -211,7 +211,7 @@ namespace AerolineApp
             this.btmGuardar.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btmGuardar.Image = global::AerolineApp.Properties.Resources.GuardarIcon;
             this.btmGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btmGuardar.Location = new System.Drawing.Point(425, 362);
+            this.btmGuardar.Location = new System.Drawing.Point(426, 343);
             this.btmGuardar.Name = "btmGuardar";
             this.btmGuardar.Size = new System.Drawing.Size(105, 74);
             this.btmGuardar.TabIndex = 10;
