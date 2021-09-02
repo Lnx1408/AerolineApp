@@ -33,7 +33,7 @@ namespace AerolineApp
 
             dgv_Destinos.Rows.Clear();
             dgv_Destinos.Refresh();
-            lst_destinos_tmp = destinoTemp.MostrarPaises();
+            lst_destinos_tmp = destinoTemp.MostrarDestino();
 
             //Se recorre la lista de objetos y se trabaja con los tipos de datos anonymus
             foreach (var destino in lst_destinos_tmp)
@@ -44,9 +44,9 @@ namespace AerolineApp
                 String Pais = (String)type.GetProperty("pais").GetValue(destino);
                 String Ciudad = (String)type.GetProperty("ciudad").GetValue(destino);
                 String NombreAeropuerto = (String)type.GetProperty("nombreAeropuerto").GetValue(destino);
-                String DetalleDireccion = (String)type.GetProperty("detalleDireccion").GetValue(destino);
+                String fecha = (String)type.GetProperty("detalleDireccion").GetValue(destino);
 
-                dgv_Destinos.Rows.Add(NumeroDestino, Pais, Ciudad, NombreAeropuerto, DetalleDireccion);
+                dgv_Destinos.Rows.Add(NumeroDestino, Pais, Ciudad, NombreAeropuerto, fecha);
 
             }
         }
@@ -64,7 +64,7 @@ namespace AerolineApp
         public void BuscarxPais() {
             dgv_Destinos.Rows.Clear();
             dgv_Destinos.Refresh();
-            lst_destinos_tmp = destinoTemp.MostrarPaises();
+            lst_destinos_tmp = destinoTemp.MostrarDestino();
 
             //Se recorre la lista de objetos y se trabaja con los tipos de datos anonymus
             foreach (var destino in lst_destinos_tmp)
@@ -86,7 +86,7 @@ namespace AerolineApp
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             MessageBox.Show(destinoTemp.BorrarDestino(int.Parse(dgv_Destinos.CurrentRow.Cells[0].Value.ToString())));
-            destinoTemp.MostrarPaises();
+            destinoTemp.MostrarDestino();
             llenarDGVDestinos();
 
         }

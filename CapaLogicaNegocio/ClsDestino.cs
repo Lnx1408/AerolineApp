@@ -13,17 +13,17 @@ namespace CapaLogicaNegocio
         private String pais;
         private String ciudad;
         private String nombreAeropuerto;
-        private String detalleDireccion;
+        private String fecha;
 
         public ClsDestino() { }
 
-        public ClsDestino(int numeroDestino, string pais, string ciudad, string nombreAeropuerto, string detalleDireccion)
+        public ClsDestino(int numeroDestino, string pais, string ciudad, string nombreAeropuerto, string fecha)
         {
             this.numeroDestino = numeroDestino;
             this.pais = pais;
             this.ciudad = ciudad;
             this.nombreAeropuerto = nombreAeropuerto;
-            this.detalleDireccion = detalleDireccion;
+            this.fecha = fecha;
         }
 
         public int NumeroDestino
@@ -50,12 +50,11 @@ namespace CapaLogicaNegocio
             set { nombreAeropuerto = value; }
         }
 
-        public String DetalleDireccion
+        public String Fecha
         {
-            get { return detalleDireccion; }
-            set { detalleDireccion = value; }
+            get { return fecha; }
+            set { fecha = value; }
         }
-
 
         ClsManejadorDestinos manejadorDestinos = new ClsManejadorDestinos();
 
@@ -68,7 +67,7 @@ namespace CapaLogicaNegocio
             try
             {
                 
-                lst.Add(new ClsParametrosDestino(NumeroDestino, Pais, Ciudad, NombreAeropuerto, DetalleDireccion));
+                lst.Add(new ClsParametrosDestino(NumeroDestino, Pais, Ciudad, NombreAeropuerto, Fecha));
                 msj = manejadorDestinos.insertarDestino(lst, pais, nombreAeropuerto);
             }
             catch (Exception ex)
@@ -88,7 +87,7 @@ namespace CapaLogicaNegocio
 
             try
             {
-                lst.Add(new ClsParametrosDestino(NumeroDestino, Pais, Ciudad, NombreAeropuerto, DetalleDireccion));
+                lst.Add(new ClsParametrosDestino(NumeroDestino, Pais, Ciudad, NombreAeropuerto, Fecha));
                 msj = manejadorDestinos.EliminarDestino(lst, NDestino);
             }
             catch (Exception ex)
@@ -101,9 +100,9 @@ namespace CapaLogicaNegocio
             return msj;
         }
 
-        public List<Object> MostrarPaises()
+        public List<Object> MostrarDestino()
         {
-            return manejadorDestinos.listar_Pais();
+            return manejadorDestinos.listar_Destino();
         }
 
     }

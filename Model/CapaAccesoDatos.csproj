@@ -89,7 +89,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClsDatosDestino.cs" />
     <Compile Include="ClsManejadorDestinos.cs" />
     <Compile Include="ClsParametrosDestino.cs" />
     <Compile Include="Program.cs" />

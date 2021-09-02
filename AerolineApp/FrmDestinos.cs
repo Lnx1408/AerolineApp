@@ -58,7 +58,10 @@ namespace AerolineApp
                     destino.Pais = txtPais.Text;
                     destino.Ciudad = txtCiudad.Text;
                     destino.NombreAeropuerto = txtADestino.Text;
+                    
+                    destino.Fecha = monthCalendarFechaLlegada.SelectionStart.ToString();
                     //destino.DetalleDireccion = txtDetalleDireccion.Text;
+
                     msj = destino.registrarDestino(varPais, txtADestino.Text);
                     int Numero = int.Parse(txtNDestino.Text) + 1;
                     txtNDestino.Text = Numero.ToString();
@@ -79,6 +82,8 @@ namespace AerolineApp
         
         private void btConsultar_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(monthCalendarFechaLlegada.SelectionEnd.ToLongDateString());
+            
             frmDestinoConsultar destinoConsultar = new frmDestinoConsultar(destino, this);
             this.Hide();
             destinoConsultar.Show();
