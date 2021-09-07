@@ -61,6 +61,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCompras.Designer.cs">
+      <DependentUpon>frmCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultarCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultarCompra.Designer.cs">
+      <DependentUpon>frmConsultarCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDestinoConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +111,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCompras.resx">
+      <DependentUpon>frmCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultarCompra.resx">
+      <DependentUpon>frmConsultarCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDestinoConsultar.resx">
       <DependentUpon>frmDestinoConsultar.cs</DependentUpon>
     </EmbeddedResource>
@@ -250,6 +268,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\Consultar_mapas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\destino.txt" />
+    <Content Include="img\panama.txt" />
+    <Content Include="img\Provincias.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

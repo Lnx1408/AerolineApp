@@ -101,5 +101,19 @@ namespace AerolineApp
         {
             pbFlota.BackColor = Color.Transparent;
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCompras frmComp = new frmCompras();
+            frmComp.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCompras frmComp = new frmCompras();
+            frmComp.Show();
+        }
     }  
 }
