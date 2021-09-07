@@ -10,8 +10,8 @@ namespace CapaAccesoDatos
 {
     public class ClsManejadorDestinos
     {
-        List<ClsDatosDestino> datosDestinos = new List<ClsDatosDestino>();
-        public MySqlConnection abrirConexionMySQL()
+        
+        public MySqlConnection abrirConexion()
         {
             MySqlConnection conexion = new MySqlConnection();
             try
@@ -29,7 +29,7 @@ namespace CapaAccesoDatos
             }
             return conexion;
         }
-        public MySqlConnection cerrarConexionMySQL(MySqlConnection conexion)
+        public MySqlConnection cerrarConexion(MySqlConnection conexion)
         {
             conexion.Close();
             MessageBox.Show("Se ha cerrado la conexion con la base de datos.");
@@ -39,89 +39,112 @@ namespace CapaAccesoDatos
         }
 
 
-        public String insertarDestino(List<ClsParametrosDestino> lst, String pais, String nombreAeropuerto) {
+        public String insertarDestino(List<ClsParametrosDestino> lst) {
             String msj = "";
             try
             {
-                if (lst != null)
-                {
-                    if (!existeDestino(pais, nombreAeropuerto) )
-                    {
-                        datosDestinos.Add(new ClsDatosDestino(lst[0].NumeroDestino, lst[0].Pais, lst[0].Ciudad, lst[0].NombreAeropuerto, lst[0].DetalleDireccion));
-                        msj = "Registrado con éxito";
-                    }
-                    else
-                    {
-                        msj = "Error, el destino ingresado ya existe";
+                MySqlConnection conexion = abrirConexion();
 
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            { msj = "Error al ingresar datos"; throw ex; }
-
-            return msj;
-        }
-
-        public bool existeDestino(String pais, String nombreAeropuerto)
-        {
-            bool existe = false;
-            foreach (var destino in datosDestinos)
-            {
-                if (pais == destino.Pais.ToString() && nombreAeropuerto == destino.NombreAeropuerto)
-                {
-                    existe = true;
-                    break;
-                }
-            }
-            return existe;
-        }
-
-        public String EliminarDestino(List<ClsParametrosDestino> lst, int NDestino)
-        {
-            String msj = "";
-            try
-            {
-                if (lst != null)
-                {
-                    foreach (var destino in datosDestinos)
-                    {
-                        if (destino.NumeroDestino.Equals(NDestino))
-                        {
-                            datosDestinos.Remove(destino);
-                            msj = "Eliminado con éxito";
-                            break;
-                        }
-                    }
-                }
-
+                string query = "INSERT INTO destino " +
+                    "(idDestino, lugarDestino, Aeropuerto, Ciudad, fechaDestino)" +
+                    " VALUES (@idDestino, @lugarDestino, @Aeropuerto, @Ciudad, str_to_date(@fechaDestino, '%d/%m/%Y %H:%i'))";
+                MySqlCommand command = new MySqlCommand(query, conexion);
+                //valores para cada parámetro dado en el query
+                command.Parameters.AddWithValue("@idDestino", lst[0].NumeroDestino);
+                command.Parameters.AddWithValue("@lugarDestino", lst[0].Pais);
+                command.Parameters.AddWithValue("@Aeropuerto", lst[0].NombreAeropuerto);
+                command.Parameters.AddWithValue("@Ciudad", lst[0].Ciudad);
+                command.Parameters.AddWithValue("@fechaDestino", lst[0].Fecha);
+                //command.ExecuteNonQuery();
+                int t = command.ExecuteNonQuery();
+                msj = "Registrado con éxito, " + t;
+                cerrarConexion(conexion);
             }
             catch (Exception ex)
             {
-                msj = "Error al eliminar el destino";
-                throw ex;
+                msj = "No se pudo insertar los datos. \nMotivos:\n1. Conexión no establecida.\n2.PK duplicada." + "\nError: " + ex;
             }
             return msj;
         }
 
-        public List<Object> listar_Pais()
+        public String EliminarDestino(int NDestino)
+        {
+            String msj = "";
+            try
+            {
+                MySqlConnection conexion = abrirConexion();
+                string cadena = "DELETE FROM destino WHERE idDestino = " + NDestino;
+                MySqlCommand command = new MySqlCommand(cadena, conexion);
+                int resultado = Convert.ToInt32(command.ExecuteScalar());
+                msj = "Destino eliminado con éxito, " + resultado;
+                cerrarConexion(conexion);
+
+            }
+            catch (MySqlException ex)
+            {
+                msj = "Error al eliminar el destino\nError: "+ ex;
+                
+            }
+            return msj;
+        }
+
+        public List<Object> listar_Destino()
         {
             List<Object> lstDestino = new List<Object>();
-            foreach (var destino in datosDestinos)
+            
+            MySqlConnection conexion = abrirConexion();
+            string cadena = "select idDestino, lugarDestino, Aeropuerto, Ciudad, fechaDestino from destino";
+            MySqlCommand comando = new MySqlCommand(cadena, conexion);
+            MySqlDataReader registros = comando.ExecuteReader();
+            while (registros.Read())
             {
                 var tmp = new
                 {
-                    numeroDestino = destino.NumeroDestino,
-                    pais = destino.Pais,
-                    ciudad = destino.Ciudad,
-                    nombreAeropuerto = destino.NombreAeropuerto,
-                    detalleDireccion = destino.DetalleDireccion                    
+                    idDestino = int.Parse(registros["idDestino"].ToString()),
+                    lugarDestino = registros["lugarDestino"].ToString(),
+                    Aeropuerto = registros["Aeropuerto"].ToString(),
+                    Ciudad = registros["Ciudad"].ToString(),
+                    fechaDestino = registros["fechaDestino"].ToString()
                 };
-
                 lstDestino.Add(tmp);
             }
+            cerrarConexion(conexion);
             return lstDestino;
+        }
+        public string ObtenerIDMax()
+        {
+            String NMax="0";
+
+            MySqlConnection conexion = abrirConexion();
+            string cadena = "select max(idDestino)+1 as numero from destino;";
+            MySqlCommand comando = new MySqlCommand(cadena, conexion);
+            MySqlDataReader registros = comando.ExecuteReader();
+            while (registros.Read())
+            {
+                NMax = registros["numero"].ToString();
+            }
+            cerrarConexion(conexion);
+            return NMax;
+        }
+        public String ModificarDestino(int idDestino, string lugarDestino,string Aeropuerto, string Ciudad,string fechaDestino)
+        {
+            String Msj = "";
+            try
+            {
+                MySqlConnection conexion = abrirConexion();
+                String actualizar = "update destino set lugarDestino=@ lugarDestino, Aeropuerto=@ Aeropuerto, Ciudad=@ Ciudad, fechaDestino=@ fechaDestino where idDestino = " + idDestino;
+                MySqlCommand comando = new MySqlCommand(actualizar, conexion);
+                //comando.Parameters.AddWithValue("@idDestino", idDestino);
+                comando.Parameters.AddWithValue("@lugarDestino", lugarDestino);
+                comando.Parameters.AddWithValue("@Aeropuerto", Aeropuerto);
+                comando.Parameters.AddWithValue("@Ciudad", Ciudad);
+                comando.Parameters.AddWithValue("@fechaDestino", fechaDestino);
+                int Resultado = comando.ExecuteNonQuery();
+                Msj = "Se ha actualizado correctamente los datos del destino, " + Resultado;
+                cerrarConexion(conexion);
+            }
+            catch (MySqlException e) { Msj = "No se ha podido actualizar los datos del destino" + e; }
+            return Msj;
         }
     }
 }

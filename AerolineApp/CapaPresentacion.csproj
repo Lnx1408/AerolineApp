@@ -79,6 +79,12 @@
     <Compile Include="frmDestinoConsultar.Designer.cs">
       <DependentUpon>frmDestinoConsultar.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDestinoModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDestinoModificar.Designer.cs">
+      <DependentUpon>frmDestinoModificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDestinos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDestinoConsultar.resx">
       <DependentUpon>frmDestinoConsultar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDestinoModificar.resx">
+      <DependentUpon>frmDestinoModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDestinos.resx">
       <DependentUpon>FrmDestinos.cs</DependentUpon>
@@ -268,6 +277,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\Consultar_mapas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\ModificarIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\destino.txt" />
