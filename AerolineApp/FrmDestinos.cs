@@ -21,7 +21,6 @@ namespace AerolineApp
             InitializeComponent();
             txtPais.Focus();
             txtNDestino.Text = destino.obtenerVmax();
-            
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -35,8 +34,6 @@ namespace AerolineApp
             txtADestino.Text = "";
             txtCiudad.Text = "";
             txtPais.Text = "";
-            
-
         }
 
         private void btmGuardar_Click(object sender, EventArgs e)
@@ -63,17 +60,12 @@ namespace AerolineApp
                     if (this.foto.Equals(""))
                     {
                         destino.Foto = Path.Combine(Environment.CurrentDirectory, "..\\..\\img\\NoImagen.png");
-                        Console.WriteLine(Path.Combine(Environment.CurrentDirectory, "..\\..\\img\\NoImagen.png"));
                     }
                     else
                     {
                         destino.Foto = this.foto;
                     }
                     
-                    //destino.Fecha = TimePickerSalida.Value.ToShortDateString() +" "+TimePickerSalida.Value.ToShortTimeString();
-                    //destino.Fecha = monthCalendarFechaLlegada.SelectionEnd.ToShortDateString();
-                    //destino.DetalleDireccion = txtDetalleDireccion.Text;
-
                     msj = destino.registrarDestino();
                     if (msj.Equals("Registrado con éxito, 1")) {
                         int Numero = int.Parse(txtNDestino.Text) + 1;
@@ -102,10 +94,7 @@ namespace AerolineApp
             destinoConsultar.Show();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
 
         /*
          * Validación de Números
@@ -130,6 +119,12 @@ namespace AerolineApp
                 b.BackColor = Color.Transparent;
             }  
         }
+
+
+        
+             destino.Fecha = TimePickerSalida.Value.ToShortDateString() +" "+TimePickerSalida.Value.ToShortTimeString();
+             destino.Fecha = monthCalendarFechaLlegada.SelectionEnd.ToShortDateString();
+             destino.DetalleDireccion = txtDetalleDireccion.Text;
         */
         public void SetFocusB(Button b)
         {
@@ -138,7 +133,6 @@ namespace AerolineApp
         public void LostFocusB(Button b) {
             b.BackColor = Color.Transparent;
         }
-
         private void FrmDestinos_Shown(object sender, EventArgs e)
         {
             txtPais.Focus();
@@ -164,4 +158,4 @@ namespace AerolineApp
             }
         }
     }
-    }
+}

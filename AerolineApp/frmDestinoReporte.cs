@@ -12,9 +12,14 @@ namespace AerolineApp
 {
     public partial class frmDestinoReporte : Form
     {
-        public frmDestinoReporte(DataSet ds)
+        public frmDestinoReporte()
         {
             InitializeComponent();
+        }
+
+        private void CrystalReportsDestinos1_InitReport(object sender, EventArgs e)
+        {
+
         }
     }
 }

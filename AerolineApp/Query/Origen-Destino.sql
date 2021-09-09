@@ -1,13 +1,6 @@
 ﻿use Aereolinea;
 
 --drop table Destino;
---drop table Origen;
-create table Origen(
-idOrigen int,
-lugarDestino varchar(20),
-Aeropuerto varchar(20),
-Ciudad varchar(20),
-foto varchar(200));
 
 create table Destino(
 idDestino int,

@@ -136,10 +136,11 @@ namespace AerolineApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            this.registros.Fill(ds, "Destino");
-            frmDestinoReporte destinoReporte = new frmDestinoReporte(ds);
-            destinoReporte.Show();
+            //DataSet ds = new DataSet();
+            
+            //this.registros.Fill(ds, "Destino");
+            frmDestinoReporte destinoReporte = new frmDestinoReporte();
+            destinoReporte.ShowDialog();
         }
     }
 }
