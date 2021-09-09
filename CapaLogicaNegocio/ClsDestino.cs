@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +14,17 @@ namespace CapaLogicaNegocio
         private String pais;
         private String ciudad;
         private String nombreAeropuerto;
-        private String fecha;
+        private String foto;
 
         public ClsDestino() { }
 
-        public ClsDestino(int numeroDestino, string pais, string ciudad, string nombreAeropuerto, string fecha)
+        public ClsDestino(int numeroDestino, string pais, string ciudad, string nombreAeropuerto, string foto)
         {
             this.numeroDestino = numeroDestino;
             this.pais = pais;
             this.ciudad = ciudad;
             this.nombreAeropuerto = nombreAeropuerto;
-            this.fecha = fecha;
+            this.foto = foto;
         }
 
         public int NumeroDestino
@@ -50,10 +51,10 @@ namespace CapaLogicaNegocio
             set { nombreAeropuerto = value; }
         }
 
-        public String Fecha
+        public String Foto
         {
-            get { return fecha; }
-            set { fecha = value; }
+            get { return foto; }
+            set { foto = value; }
         }
 
         ClsManejadorDestinos manejadorDestinos = new ClsManejadorDestinos();
@@ -67,7 +68,7 @@ namespace CapaLogicaNegocio
             try
             {
                 
-                lst.Add(new ClsParametrosDestino(NumeroDestino, Pais, Ciudad, NombreAeropuerto, Fecha));
+                lst.Add(new ClsParametrosDestino(NumeroDestino, Pais, Ciudad, NombreAeropuerto, Foto));
                 msj = manejadorDestinos.insertarDestino(lst);
             }
             catch (Exception ex)
@@ -87,8 +88,11 @@ namespace CapaLogicaNegocio
             
             return msj;
         }
-
-        public List<Object> MostrarDestino()
+        public string modificar(int idDestino, string lugarDestino, string Aeropuerto, string Ciudad, string Foto) 
+        {
+            return manejadorDestinos.ModificarDestino(idDestino, lugarDestino, Aeropuerto, Ciudad, Foto);
+        }
+        public Tuple<List<Object>, SqlDataAdapter> MostrarDestino()
         {
             return manejadorDestinos.listar_Destino();
         }

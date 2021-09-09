@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,13 @@ namespace AerolineApp
     public partial class FrmDestinos : Form
     {
         ClsDestino destino = new ClsDestino();
-        
+        String foto ="";
         public FrmDestinos()
         {
             InitializeComponent();
             txtPais.Focus();
             txtNDestino.Text = destino.obtenerVmax();
+            
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -58,8 +60,17 @@ namespace AerolineApp
                     destino.Pais = txtPais.Text;
                     destino.Ciudad = txtCiudad.Text;
                     destino.NombreAeropuerto = txtADestino.Text;
-                    destino.Fecha = TimePickerSalida.Value.ToShortDateString() +" "+TimePickerSalida.Value.ToShortTimeString();
-                    MessageBox.Show(destino.Fecha);
+                    if (this.foto.Equals(""))
+                    {
+                        destino.Foto = Path.Combine(Environment.CurrentDirectory, "..\\..\\img\\NoImagen.png");
+                        Console.WriteLine(Path.Combine(Environment.CurrentDirectory, "..\\..\\img\\NoImagen.png"));
+                    }
+                    else
+                    {
+                        destino.Foto = this.foto;
+                    }
+                    
+                    //destino.Fecha = TimePickerSalida.Value.ToShortDateString() +" "+TimePickerSalida.Value.ToShortTimeString();
                     //destino.Fecha = monthCalendarFechaLlegada.SelectionEnd.ToShortDateString();
                     //destino.DetalleDireccion = txtDetalleDireccion.Text;
 
@@ -86,7 +97,7 @@ namespace AerolineApp
         {
             //MessageBox.Show(monthCalendarFechaLlegada.SelectionEnd.ToShortDateString());
             
-            frmDestinoConsultar destinoConsultar = new frmDestinoConsultar(destino, this);
+            frmDestinoConsultar destinoConsultar = new frmDestinoConsultar(destino);
             this.Hide();
             destinoConsultar.Show();
         }
@@ -128,30 +139,29 @@ namespace AerolineApp
             b.BackColor = Color.Transparent;
         }
 
-
-        private void btmGuardar_MouseEnter(object sender, EventArgs e)
-        {
-            SetFocusB(btmGuardar);
-        }
-
-        private void btConsultar_MouseEnter(object sender, EventArgs e)
-        {
-            SetFocusB(btConsultar);
-        }
-
         private void FrmDestinos_Shown(object sender, EventArgs e)
         {
             txtPais.Focus();
         }
 
-        private void btmGuardar_MouseLeave(object sender, EventArgs e)
-        {
-            LostFocusB(btmGuardar);
-        }
+        
 
-        private void btConsultar_MouseLeave(object sender, EventArgs e)
+        private void btnSeleccionarFoto_Click(object sender, EventArgs e)
         {
-            LostFocusB(btConsultar);
+            try
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    String imagen = openFileDialog1.FileName;
+
+                    this.foto = imagen;
+                    pboxFotoDestino.Image = Image.FromFile(imagen);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El archivo no es válido: " +ex);
+            }
         }
     }
     }

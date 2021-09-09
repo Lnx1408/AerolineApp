@@ -85,6 +85,12 @@
     <Compile Include="frmDestinoModificar.Designer.cs">
       <DependentUpon>frmDestinoModificar.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDestinoReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDestinoReporte.Designer.cs">
+      <DependentUpon>frmDestinoReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDestinos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,9 +285,16 @@
     <None Include="img\Consultar_mapas.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\aerolineaIcon.png" />
+    <Content Include="img\fondoDestinos.jpg" />
+    <Content Include="img\IconoPrograma.ico" />
+    <Content Include="img\Imprimir-icon.png" />
     <Content Include="img\ModificarIcon.png" />
+    <Content Include="img\NoImagen.png" />
+    <Content Include="Query\Origen-Destino.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Reportes\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

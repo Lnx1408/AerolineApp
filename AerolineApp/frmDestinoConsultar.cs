@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,16 +16,16 @@ namespace AerolineApp
     {
         ClsDestino destinoTemp;
         List<object> lst_destinos_tmp;
-        FrmDestinos frmDestinos;
+        SqlDataAdapter registros;
+        FrmDestinos frmDestinos = new FrmDestinos();
 
         public frmDestinoConsultar()
         {
             InitializeComponent();
         }
-        public frmDestinoConsultar(ClsDestino destino, FrmDestinos frmDestinos) {
+        public frmDestinoConsultar(ClsDestino destino) {
             InitializeComponent();
             destinoTemp = destino;
-            this.frmDestinos = frmDestinos;
             llenarDGVDestinos();
         }
 
@@ -33,7 +34,7 @@ namespace AerolineApp
 
             dgv_Destinos.Rows.Clear();
             dgv_Destinos.Refresh();
-            lst_destinos_tmp = destinoTemp.MostrarDestino();
+            lst_destinos_tmp = destinoTemp.MostrarDestino().Item1;
 
             //Se recorre la lista de objetos y se trabaja con los tipos de datos anonymus
             foreach (var destino in lst_destinos_tmp)
@@ -44,9 +45,9 @@ namespace AerolineApp
                 String Pais = (String)type.GetProperty("lugarDestino").GetValue(destino);
                 String Ciudad = (String)type.GetProperty("Ciudad").GetValue(destino);
                 String NombreAeropuerto = (String)type.GetProperty("Aeropuerto").GetValue(destino);
-                String fecha = (String)type.GetProperty("fechaDestino").GetValue(destino);
+                String foto = (String)type.GetProperty("Foto").GetValue(destino);
 
-                dgv_Destinos.Rows.Add(NumeroDestino, Pais, Ciudad, NombreAeropuerto, fecha);
+                dgv_Destinos.Rows.Add(NumeroDestino, Pais, Ciudad, NombreAeropuerto, foto);
 
             }
         }
@@ -64,7 +65,7 @@ namespace AerolineApp
         public void BuscarxPais() {
             dgv_Destinos.Rows.Clear();
             dgv_Destinos.Refresh();
-            lst_destinos_tmp = destinoTemp.MostrarDestino();
+            lst_destinos_tmp = destinoTemp.MostrarDestino().Item1;
 
             //Se recorre la lista de objetos y se trabaja con los tipos de datos anonymus
             foreach (var destino in lst_destinos_tmp)
@@ -76,9 +77,9 @@ namespace AerolineApp
                     int NumeroDestino = (int)type.GetProperty("idDestino").GetValue(destino);
                     String Ciudad = (String)type.GetProperty("Ciudad").GetValue(destino);
                     String NombreAeropuerto = (String)type.GetProperty("Aeropuerto").GetValue(destino);
-                    String fecha = (String)type.GetProperty("fechaDestino").GetValue(destino);
+                    String foto = (String)type.GetProperty("Foto").GetValue(destino);
 
-                    dgv_Destinos.Rows.Add(NumeroDestino, Pais, Ciudad, NombreAeropuerto, fecha);
+                    dgv_Destinos.Rows.Add(NumeroDestino, Pais, Ciudad, NombreAeropuerto, foto);
                 }
             }
         }
@@ -86,16 +87,15 @@ namespace AerolineApp
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             MessageBox.Show(destinoTemp.BorrarDestino(int.Parse(dgv_Destinos.CurrentRow.Cells[0].Value.ToString())));
-            destinoTemp.MostrarDestino();
+            //destinoTemp.MostrarDestino();
             llenarDGVDestinos();
 
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            
             frmDestinos.Show();
+            this.Hide();
         }
 
         private void btListarTodos_Click(object sender, EventArgs e)
@@ -103,39 +103,43 @@ namespace AerolineApp
             llenarDGVDestinos();
         }
 
-        private void BtBuscar_MouseEnter(object sender, EventArgs e)
-        {
-            BtBuscar.BackColor = Color.LightBlue; ;
-        }
-
-        private void BtBuscar_MouseLeave(object sender, EventArgs e)
-        {
-            BtBuscar.BackColor = Color.Transparent;
-        }
-
-        private void btListarTodos_MouseEnter(object sender, EventArgs e)
-        {
-            btListarTodos.BackColor = Color.LightBlue;
-        }
-
-        private void btListarTodos_MouseLeave(object sender, EventArgs e)
-        {
-            btListarTodos.BackColor = Color.Transparent;
-        }
-
-        private void btnEliminar_MouseEnter(object sender, EventArgs e)
-        {
-            btnEliminar.BackColor = Color.LightBlue;
-        }
-
-        private void btnEliminar_MouseLeave(object sender, EventArgs e)
-        {
-            btnEliminar.BackColor = Color.Transparent;
-        }
-
+        
         private void frmDestinoConsultar_Shown(object sender, EventArgs e)
         {
             txtPais.Focus();
+        }
+
+        private void dgv_Destinos_Click(object sender, EventArgs e)
+        {
+            /*if (!dgv_Destinos.RowCount.Equals(0))
+            {
+                pboxFoto.Image = Image.FromFile(dgv_Destinos.CurrentRow.Cells[4].Value.ToString());
+
+            }*/
+        }
+
+        private void dgv_Destinos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (!dgv_Destinos.RowCount.Equals(0))
+            {
+                pboxFoto.Image = Image.FromFile(dgv_Destinos.CurrentRow.Cells[4].Value.ToString());
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmDestinoModificar destinoModificar = new frmDestinoModificar(dgv_Destinos.CurrentRow.Cells[0].Value.ToString(),destinoTemp);
+            destinoModificar.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            this.registros.Fill(ds, "Destino");
+            frmDestinoReporte destinoReporte = new frmDestinoReporte(ds);
+            destinoReporte.Show();
         }
     }
 }

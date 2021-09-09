@@ -253,9 +253,29 @@ namespace AerolineApp.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondoDestinos {
+            get {
+                object obj = ResourceManager.GetObject("fondoDestinos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GuardarIcon {
             get {
                 object obj = ResourceManager.GetObject("GuardarIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Imprimir_icon {
+            get {
+                object obj = ResourceManager.GetObject("Imprimir-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

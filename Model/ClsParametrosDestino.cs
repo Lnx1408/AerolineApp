@@ -12,17 +12,17 @@ namespace CapaAccesoDatos
         private String pais;
         private String ciudad;
         private String nombreAeropuerto;
-        private String fecha;
+        private String foto;
         
 
 
-        public ClsParametrosDestino(int numeroDestino, string pais, string ciudad, string nombreAeropuerto, string fecha)
+        public ClsParametrosDestino(int numeroDestino, string pais, string ciudad, string nombreAeropuerto, string foto)
         {
             this.numeroDestino = numeroDestino;
             this.pais = pais;
             this.ciudad = ciudad;
             this.nombreAeropuerto = nombreAeropuerto;
-            this.fecha = fecha;
+            this.foto = foto;
         }
 
         public int NumeroDestino
@@ -49,10 +49,10 @@ namespace CapaAccesoDatos
             set { nombreAeropuerto = value; }
         }
 
-        public String Fecha
+        public String Foto
         {
-            get { return fecha; }
-            set { fecha = value; }
+            get { return foto; }
+            set { foto = value; }
         }
 
     }

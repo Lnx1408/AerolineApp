@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +12,12 @@ namespace CapaAccesoDatos
     public class ClsManejadorDestinos
     {
         
-        public MySqlConnection abrirConexion()
+        public SqlConnection abrirConexion()
         {
-            MySqlConnection conexion = new MySqlConnection();
+            SqlConnection conexion = new SqlConnection();
             try
             {
-                string ConexionSQL = "server = localhost; port = 3306; user = root; pwd = 12345; database = proyectoaerolinea;";
+                string ConexionSQL = "server = localhost; database = Aereolinea; integrated security = true";
                 conexion.ConnectionString = ConexionSQL;
                 //SqlConnection conexion = new SqlConnection(ConexionSQL);
                 conexion.Open();
@@ -29,10 +30,10 @@ namespace CapaAccesoDatos
             }
             return conexion;
         }
-        public MySqlConnection cerrarConexion(MySqlConnection conexion)
+        public SqlConnection cerrarConexion(SqlConnection conexion)
         {
             conexion.Close();
-            MessageBox.Show("Se ha cerrado la conexion con la base de datos.");
+            Console.WriteLine("Se ha cerrado la conexion con la base de datos.");
 
             return conexion;
 
@@ -43,18 +44,18 @@ namespace CapaAccesoDatos
             String msj = "";
             try
             {
-                MySqlConnection conexion = abrirConexion();
+                SqlConnection conexion = abrirConexion();
 
                 string query = "INSERT INTO destino " +
-                    "(idDestino, lugarDestino, Aeropuerto, Ciudad, fechaDestino)" +
-                    " VALUES (@idDestino, @lugarDestino, @Aeropuerto, @Ciudad, str_to_date(@fechaDestino, '%d/%m/%Y %H:%i'))";
-                MySqlCommand command = new MySqlCommand(query, conexion);
+                    "(idDestino, lugarDestino, Aeropuerto, Ciudad, foto)" +
+                    " VALUES (@idDestino, @lugarDestino, @Aeropuerto, @Ciudad, @foto)";
+                SqlCommand command = new SqlCommand(query, conexion);
                 //valores para cada parámetro dado en el query
                 command.Parameters.AddWithValue("@idDestino", lst[0].NumeroDestino);
                 command.Parameters.AddWithValue("@lugarDestino", lst[0].Pais);
                 command.Parameters.AddWithValue("@Aeropuerto", lst[0].NombreAeropuerto);
                 command.Parameters.AddWithValue("@Ciudad", lst[0].Ciudad);
-                command.Parameters.AddWithValue("@fechaDestino", lst[0].Fecha);
+                command.Parameters.AddWithValue("@foto", lst[0].Foto);
                 //command.ExecuteNonQuery();
                 int t = command.ExecuteNonQuery();
                 msj = "Registrado con éxito, " + t;
@@ -72,15 +73,15 @@ namespace CapaAccesoDatos
             String msj = "";
             try
             {
-                MySqlConnection conexion = abrirConexion();
+                SqlConnection conexion = abrirConexion();
                 string cadena = "DELETE FROM destino WHERE idDestino = " + NDestino;
-                MySqlCommand command = new MySqlCommand(cadena, conexion);
+                SqlCommand command = new SqlCommand(cadena, conexion);
                 int resultado = Convert.ToInt32(command.ExecuteScalar());
                 msj = "Destino eliminado con éxito, " + resultado;
                 cerrarConexion(conexion);
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 msj = "Error al eliminar el destino\nError: "+ ex;
                 
@@ -88,14 +89,15 @@ namespace CapaAccesoDatos
             return msj;
         }
 
-        public List<Object> listar_Destino()
+        public Tuple<List<Object>, SqlDataAdapter> listar_Destino()
         {
             List<Object> lstDestino = new List<Object>();
             
-            MySqlConnection conexion = abrirConexion();
-            string cadena = "select idDestino, lugarDestino, Aeropuerto, Ciudad, fechaDestino from destino";
-            MySqlCommand comando = new MySqlCommand(cadena, conexion);
-            MySqlDataReader registros = comando.ExecuteReader();
+            SqlConnection conexion = abrirConexion();
+            string cadena = "select idDestino, lugarDestino, Aeropuerto, Ciudad, foto from destino";
+            SqlCommand comando = new SqlCommand(cadena, conexion);
+            SqlDataAdapter RegistroAdapter = new SqlDataAdapter(cadena, conexion);
+            SqlDataReader registros = comando.ExecuteReader();
             while (registros.Read())
             {
                 var tmp = new
@@ -104,41 +106,46 @@ namespace CapaAccesoDatos
                     lugarDestino = registros["lugarDestino"].ToString(),
                     Aeropuerto = registros["Aeropuerto"].ToString(),
                     Ciudad = registros["Ciudad"].ToString(),
-                    fechaDestino = registros["fechaDestino"].ToString()
+                    Foto = registros["foto"].ToString()
                 };
                 lstDestino.Add(tmp);
             }
             cerrarConexion(conexion);
-            return lstDestino;
+            return Tuple.Create(lstDestino, RegistroAdapter); ;
         }
         public string ObtenerIDMax()
         {
-            String NMax="0";
+            String NMax="";
 
-            MySqlConnection conexion = abrirConexion();
+            SqlConnection conexion = abrirConexion();
             string cadena = "select max(idDestino)+1 as numero from destino;";
-            MySqlCommand comando = new MySqlCommand(cadena, conexion);
-            MySqlDataReader registros = comando.ExecuteReader();
+            SqlCommand comando = new SqlCommand(cadena, conexion);
+            SqlDataReader registros = comando.ExecuteReader();
             while (registros.Read())
             {
                 NMax = registros["numero"].ToString();
             }
+            if (NMax.Equals("")) 
+            {
+                NMax = "0";
+            }
             cerrarConexion(conexion);
             return NMax;
         }
-        public String ModificarDestino(int idDestino, string lugarDestino,string Aeropuerto, string Ciudad,string fechaDestino)
+
+        public String ModificarDestino(int idDestino, string lugarDestino,string Aeropuerto, string Ciudad,string Foto)
         {
             String Msj = "";
             try
             {
-                MySqlConnection conexion = abrirConexion();
-                String actualizar = "update destino set lugarDestino=@ lugarDestino, Aeropuerto=@ Aeropuerto, Ciudad=@ Ciudad, fechaDestino=@ fechaDestino where idDestino = " + idDestino;
-                MySqlCommand comando = new MySqlCommand(actualizar, conexion);
-                //comando.Parameters.AddWithValue("@idDestino", idDestino);
+                SqlConnection conexion = abrirConexion();
+                String actualizar = "update destino set lugarDestino = @lugarDestino, Aeropuerto= @Aeropuerto, Ciudad= @Ciudad, foto = @foto where idDestino = @idDestino";
+                SqlCommand comando = new SqlCommand(actualizar, conexion);
+                comando.Parameters.AddWithValue("@idDestino", idDestino);
                 comando.Parameters.AddWithValue("@lugarDestino", lugarDestino);
                 comando.Parameters.AddWithValue("@Aeropuerto", Aeropuerto);
                 comando.Parameters.AddWithValue("@Ciudad", Ciudad);
-                comando.Parameters.AddWithValue("@fechaDestino", fechaDestino);
+                comando.Parameters.AddWithValue("@foto", Foto);
                 int Resultado = comando.ExecuteNonQuery();
                 Msj = "Se ha actualizado correctamente los datos del destino, " + Resultado;
                 cerrarConexion(conexion);

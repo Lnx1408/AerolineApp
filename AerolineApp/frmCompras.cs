@@ -232,7 +232,7 @@ namespace AerolineApp
             }
             catch (Exception j)
             {
-                MessageBox.Show("Error el archivo no existe");
+                MessageBox.Show("Error el archivo no existe: " +j);
             }
         }
 
@@ -452,7 +452,7 @@ namespace AerolineApp
             }
             catch (Exception j)
             {
-                MessageBox.Show("Error el archivo no existe");
+                MessageBox.Show("Error el archivo no existe: " +j);
             }
 
         }
