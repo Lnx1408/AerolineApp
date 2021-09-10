@@ -35,6 +35,7 @@ namespace AerolineApp
             dgv_Destinos.Rows.Clear();
             dgv_Destinos.Refresh();
             lst_destinos_tmp = destinoTemp.MostrarDestino().Item1;
+            this.registros = destinoTemp.MostrarDestino().Item2;
 
             //Se recorre la lista de objetos y se trabaja con los tipos de datos anonymus
             foreach (var destino in lst_destinos_tmp)
@@ -136,10 +137,10 @@ namespace AerolineApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //DataSet ds = new DataSet();
+            DataSet ds = new DataSet();
             
-            //this.registros.Fill(ds, "Destino");
-            frmDestinoReporte destinoReporte = new frmDestinoReporte();
+            this.registros.Fill(ds, "Aereolinea");
+            frmDestinoReporte destinoReporte = new frmDestinoReporte(ds);
             destinoReporte.ShowDialog();
         }
     }

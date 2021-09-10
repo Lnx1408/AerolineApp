@@ -7,19 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AerolineApp.Reportes;
 
 namespace AerolineApp
 {
     public partial class frmDestinoReporte : Form
     {
-        public frmDestinoReporte()
+        public frmDestinoReporte(DataSet registro)
         {
             InitializeComponent();
-        }
-
-        private void CrystalReportsDestinos1_InitReport(object sender, EventArgs e)
-        {
-
+            CrystalReportsDestinos reportsDestinos = new CrystalReportsDestinos();
+            reportsDestinos.SetDataSource(registro.Tables[0]);
+            crystalReportViewer1.ReportSource = reportsDestinos;
+            crystalReportViewer1.RefreshReport();
         }
     }
 }

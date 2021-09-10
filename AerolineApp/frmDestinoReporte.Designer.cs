@@ -42,19 +42,15 @@ namespace AerolineApp
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.ReportSource = this.CrystalReportsDestinos1;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(800, 450);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(916, 450);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
-            // CrystalReportsDestinos1
-            // 
-            this.CrystalReportsDestinos1.InitReport += new System.EventHandler(this.CrystalReportsDestinos1_InitReport);
             // 
             // frmDestinoReporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(916, 450);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmDestinoReporte";
             this.Text = "frmDestinoReporte";

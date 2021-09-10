@@ -51,7 +51,7 @@
             // 
             this.lblIntegrantes.BackColor = System.Drawing.Color.Transparent;
             this.lblIntegrantes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblIntegrantes.Location = new System.Drawing.Point(70, 78);
+            this.lblIntegrantes.Location = new System.Drawing.Point(52, 61);
             this.lblIntegrantes.Name = "lblIntegrantes";
             this.lblIntegrantes.Size = new System.Drawing.Size(147, 22);
             this.lblIntegrantes.TabIndex = 2;
@@ -63,10 +63,10 @@
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.ForeColor = System.Drawing.Color.Orange;
-            this.txtUser.Location = new System.Drawing.Point(1008, 265);
+            this.txtUser.Location = new System.Drawing.Point(810, 186);
             this.txtUser.Multiline = true;
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(311, 30);
+            this.txtUser.Size = new System.Drawing.Size(263, 30);
             this.txtUser.TabIndex = 3;
             this.txtUser.TextChanged += new System.EventHandler(this.txtUser_TextChanged);
             // 
@@ -76,10 +76,10 @@
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.Orange;
-            this.txtPassword.Location = new System.Drawing.Point(1015, 389);
+            this.txtPassword.Location = new System.Drawing.Point(810, 284);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(304, 26);
+            this.txtPassword.Size = new System.Drawing.Size(263, 26);
             this.txtPassword.TabIndex = 4;
             // 
             // btnLogin
@@ -90,9 +90,9 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(1008, 492);
+            this.btnLogin.Location = new System.Drawing.Point(801, 368);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(311, 40);
+            this.btnLogin.Size = new System.Drawing.Size(277, 40);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Iniciar sesión";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -106,9 +106,9 @@
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Location = new System.Drawing.Point(1008, 560);
+            this.btnRegistrar.Location = new System.Drawing.Point(801, 429);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(311, 40);
+            this.btnRegistrar.Size = new System.Drawing.Size(277, 40);
             this.btnRegistrar.TabIndex = 6;
             this.btnRegistrar.Text = "Registrar usuario";
             this.btnRegistrar.UseVisualStyleBackColor = false;
@@ -116,21 +116,19 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::AerolineApp.Properties.Resources.principal;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1365, 655);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.Size = new System.Drawing.Size(1095, 494);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // frmPrincipal
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1370, 640);
+            this.ClientSize = new System.Drawing.Size(1095, 494);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
