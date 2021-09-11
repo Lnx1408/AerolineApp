@@ -45,9 +45,15 @@ namespace AerolineApp
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_listarTodos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_listarTodos
@@ -71,6 +77,7 @@ namespace AerolineApp
             this.dgv_listarTodos.ReadOnly = true;
             this.dgv_listarTodos.RowHeadersWidth = 51;
             this.dgv_listarTodos.RowTemplate.Height = 24;
+            this.dgv_listarTodos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_listarTodos.Size = new System.Drawing.Size(1129, 209);
             this.dgv_listarTodos.TabIndex = 55;
             this.dgv_listarTodos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_listarTodos_CellContentClick);
@@ -167,11 +174,12 @@ namespace AerolineApp
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Schoolbook", 9.75F);
-            this.label5.Location = new System.Drawing.Point(575, 427);
+            this.label5.Location = new System.Drawing.Point(557, 451);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 21);
             this.label5.TabIndex = 57;
             this.label5.Text = "Regresar";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // pictureBox2
             // 
@@ -186,19 +194,66 @@ namespace AerolineApp
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(572, 358);
+            this.pictureBox1.Location = new System.Drawing.Point(534, 386);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(85, 83);
+            this.pictureBox1.Size = new System.Drawing.Size(128, 62);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 56;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(83, 382);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(78, 68);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 63;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Schoolbook", 9.75F);
+            this.label1.Location = new System.Drawing.Point(50, 450);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(148, 21);
+            this.label1.TabIndex = 64;
+            this.label1.Text = "Cancelar Compra";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(1002, 386);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(128, 62);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 65;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Schoolbook", 9.75F);
+            this.label2.Location = new System.Drawing.Point(989, 451);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(152, 21);
+            this.label2.TabIndex = 66;
+            this.label2.Text = "Imprimir Reporte";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // frmConsultarCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1160, 455);
+            this.ClientSize = new System.Drawing.Size(1160, 474);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.dgv_listarTodos);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label5);
@@ -209,6 +264,8 @@ namespace AerolineApp
             ((System.ComponentModel.ISupportInitialize)(this.dgv_listarTodos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,5 +288,9 @@ namespace AerolineApp
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label2;
     }
 }

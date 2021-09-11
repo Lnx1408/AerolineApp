@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaAccesoDatos;
+using System.Data.SqlClient;
 
 namespace CapaLogicaNegocio
 {
@@ -105,14 +106,14 @@ namespace CapaLogicaNegocio
         {
             string msj = "";
 
-            //Lista genérica de parámetros
+            
             List<ClsParametros> lst = new List<ClsParametros>();
 
             try
             {
                 //Pasar los parámetros hacia la capa de acceso a datos
                 lst.Add(new ClsParametros(Cedula, Nombres, Apellidos, numPas, Clase, Pais, Origen, Destino, FechaIda, fechaRegreso, Precio));
-                //M.insertar_alumno(lst,cd);
+                
 
                 msj = M.EliminarXCedula(cd);
             }
@@ -128,7 +129,7 @@ namespace CapaLogicaNegocio
 
 
 
-        public override List<Object> listar()
+        public Tuple<List<Object>,SqlDataAdapter>listar()
         {
             return M.listar_alumno();
         }

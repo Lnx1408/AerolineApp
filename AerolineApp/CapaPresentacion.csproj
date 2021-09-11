@@ -128,8 +128,20 @@
     <Compile Include="frmRegistrar.Designer.cs">
       <DependentUpon>frmRegistrar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmReporteCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteCompra.Designer.cs">
+      <DependentUpon>FrmReporteCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\CrystalReporteCompra.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReporteCompra.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\CrystalReportsDestinos.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -166,6 +178,9 @@
     <EmbeddedResource Include="frmRegistrar.resx">
       <DependentUpon>frmRegistrar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmReporteCompra.resx">
+      <DependentUpon>FrmReporteCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -176,6 +191,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reportes\CrystalReporteCompra.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReporteCompra.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\CrystalReportsDestinos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReportsDestinos.cs</LastGenOutput>
@@ -306,6 +325,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\aerolineaIcon.png" />
+    <Content Include="img\back.jpg" />
+    <Content Include="img\cancel.png" />
+    <Content Include="img\encaa.jpg" />
+    <Content Include="img\encaa2.jpg" />
     <Content Include="img\fondoDestinos.jpg" />
     <Content Include="img\IconoPrograma.ico" />
     <Content Include="img\Imprimir-icon.png" />

@@ -8,18 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 
 namespace AerolineApp
 {
     public partial class frmConsultarCompra : Form
     {
         List<Object> lst_alumnos_tmp;
-        ClsPasajero AlumnoTemp;
+        ClsPasajero VueloTemp;
+        SqlDataAdapter registros;
         public frmConsultarCompra(ClsPasajero Al)
         {
             InitializeComponent();
-            this.AlumnoTemp = Al;
+            this.VueloTemp = Al;
             llenar_datagridview_alumnos();
         }
 
@@ -27,7 +28,8 @@ namespace AerolineApp
         {
             dgv_listarTodos.Rows.Clear();
             dgv_listarTodos.Refresh();
-            lst_alumnos_tmp = AlumnoTemp.listar();
+            lst_alumnos_tmp = VueloTemp.listar().Item1;
+            this.registros = VueloTemp.listar().Item2;
 
             //Se recorre la lista de objetos y se trabaja con los tipos de datos anonymus
             foreach (var alumno in lst_alumnos_tmp)
@@ -64,6 +66,84 @@ namespace AerolineApp
         private void dgv_listarTodos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show("Esta segur@ de eliminar su compra", "Cancelación de compra", buttons);
+                if (result == DialogResult.Yes)
+                {
+                    MessageBox.Show(VueloTemp.eliminar((dgv_listarTodos.CurrentRow.Cells[0].Value.ToString())));
+                    llenar_datagridview_alumnos();
+                }
+                else
+                {
+                    llenar_datagridview_alumnos();
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No hay datos o filas para eliminar.");
+            }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            DataSet datset = new DataSet();
+            this.registros.Fill(datset, "Aereolinea");
+            FrmReporteCompra frmRep = new FrmReporteCompra(datset);
+            frmRep.ShowDialog();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(VueloTemp.eliminar((dgv_listarTodos.CurrentRow.Cells[0].Value.ToString())));
+                llenar_datagridview_alumnos();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No hay datos o filas para eliminar.");
+            }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            DataSet datset = new DataSet();
+            this.registros.Fill(datset, "Aereolinea");
+            FrmReporteCompra frmRep = new FrmReporteCompra(datset);
+            frmRep.ShowDialog();
+        }
+
+        private void pictureBox3_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(VueloTemp.eliminar((dgv_listarTodos.CurrentRow.Cells[0].Value.ToString())));
+                llenar_datagridview_alumnos();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No hay datos o filas para eliminar.");
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            DataSet datset = new DataSet();
+            this.registros.Fill(datset, "Aereolinea");
+            FrmReporteCompra frmRep = new FrmReporteCompra(datset);
+            frmRep.ShowDialog();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

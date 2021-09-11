@@ -121,13 +121,14 @@ namespace CapaAccesoDatos
             }
             return existe;
         }
-        public List<Object> listar_alumno()
+        public Tuple<List<Object>,SqlDataAdapter>listar_alumno()
         {
             List<Object> lstAlumnos = new List<Object>();
 
             SqlConnection conexion = abrirConexionSqlServer();
             string cadena = "select Cedula,Nombres,Apellidos,NumeroPasajeros,Clase,Pais,Origen,Destino,FechaIda,FechaRegreso,ValorTotal from compra";
             SqlCommand comando = new SqlCommand(cadena, conexion);
+            SqlDataAdapter RegistroAdapter = new SqlDataAdapter(cadena, conexion);
             SqlDataReader registros = comando.ExecuteReader();
             while (registros.Read())
             {
@@ -150,7 +151,7 @@ namespace CapaAccesoDatos
                 lstAlumnos.Add(tmp);
             }
             cerrarConexionSqlServer(conexion);
-            return lstAlumnos;
+            return Tuple.Create(lstAlumnos,RegistroAdapter);
         }
         // ---------------------- Reciente --------------------
         //public String EliminarXCedula(List<ClsParametros> lst, String Cedula)
