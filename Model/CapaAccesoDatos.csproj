@@ -90,11 +90,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClsDatosDestino.cs" />
+    <Compile Include="ClsDatosUsuario.cs" />
     <Compile Include="ClsDatosVuelo.cs" />
     <Compile Include="ClsManejadorCompra.cs" />
     <Compile Include="ClsManejadorDestinos.cs" />
+    <Compile Include="ClsManejadorUsuario.cs" />
     <Compile Include="ClsParametrosCompra.cs" />
     <Compile Include="ClsParametrosDestino.cs" />
+    <Compile Include="ClsParametrosUsuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

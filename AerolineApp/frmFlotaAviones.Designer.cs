@@ -33,10 +33,10 @@
             this.labelModeloText = new System.Windows.Forms.Label();
             this.lblModelo = new System.Windows.Forms.Label();
             this.txtCapacidad = new System.Windows.Forms.TextBox();
-            this.txtCeduka = new System.Windows.Forms.TextBox();
+            this.txtAltura = new System.Windows.Forms.TextBox();
             this.txtVelocidad = new System.Windows.Forms.TextBox();
             this.btnAnterior = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pctAvion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctModelo)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +75,7 @@
             this.lblModelo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.lblModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModelo.ForeColor = System.Drawing.Color.Orange;
-            this.lblModelo.Location = new System.Drawing.Point(973, 89);
+            this.lblModelo.Location = new System.Drawing.Point(972, 103);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(352, 37);
             this.lblModelo.TabIndex = 3;
@@ -94,18 +94,18 @@
             this.txtCapacidad.Size = new System.Drawing.Size(331, 30);
             this.txtCapacidad.TabIndex = 4;
             // 
-            // txtCeduka
+            // txtAltura
             // 
-            this.txtCeduka.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.txtCeduka.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCeduka.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtCeduka.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCeduka.ForeColor = System.Drawing.Color.Orange;
-            this.txtCeduka.Location = new System.Drawing.Point(977, 386);
-            this.txtCeduka.Multiline = true;
-            this.txtCeduka.Name = "txtCeduka";
-            this.txtCeduka.Size = new System.Drawing.Size(294, 30);
-            this.txtCeduka.TabIndex = 5;
+            this.txtAltura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.txtAltura.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAltura.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtAltura.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAltura.ForeColor = System.Drawing.Color.Orange;
+            this.txtAltura.Location = new System.Drawing.Point(977, 386);
+            this.txtAltura.Multiline = true;
+            this.txtAltura.Name = "txtAltura";
+            this.txtAltura.Size = new System.Drawing.Size(294, 30);
+            this.txtAltura.TabIndex = 5;
             // 
             // txtVelocidad
             // 
@@ -133,29 +133,31 @@
             this.btnAnterior.TabIndex = 7;
             this.btnAnterior.Text = "Anterior";
             this.btnAnterior.UseVisualStyleBackColor = false;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
-            // button1
+            // btnSiguiente
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(112)))), ((int)(((byte)(179)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1166, 579);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 40);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Siguiente";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSiguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(112)))), ((int)(((byte)(179)))));
+            this.btnSiguiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSiguiente.ForeColor = System.Drawing.Color.White;
+            this.btnSiguiente.Location = new System.Drawing.Point(1166, 579);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(148, 40);
+            this.btnSiguiente.TabIndex = 8;
+            this.btnSiguiente.Text = "Siguiente";
+            this.btnSiguiente.UseVisualStyleBackColor = false;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // frmFlotaAviones
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1370, 653);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1347, 653);
+            this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnAnterior);
             this.Controls.Add(this.txtVelocidad);
-            this.Controls.Add(this.txtCeduka);
+            this.Controls.Add(this.txtAltura);
             this.Controls.Add(this.txtCapacidad);
             this.Controls.Add(this.lblModelo);
             this.Controls.Add(this.labelModeloText);
@@ -180,9 +182,9 @@
         private System.Windows.Forms.Label labelModeloText;
         private System.Windows.Forms.Label lblModelo;
         private System.Windows.Forms.TextBox txtCapacidad;
-        private System.Windows.Forms.TextBox txtCeduka;
+        private System.Windows.Forms.TextBox txtAltura;
         private System.Windows.Forms.TextBox txtVelocidad;
         private System.Windows.Forms.Button btnAnterior;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSiguiente;
     }
 }

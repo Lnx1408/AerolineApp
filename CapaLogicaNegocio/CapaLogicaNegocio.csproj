@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ClsDestino.cs" />
     <Compile Include="ClsPasajero.cs" />
+    <Compile Include="ClsUsuario.cs" />
     <Compile Include="ClsVuelo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
