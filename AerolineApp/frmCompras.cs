@@ -33,7 +33,7 @@ namespace AerolineApp
             txtcedula.Text = "";
             txtnombres.Text = "";
             txtapellidos.Text = "";
-            txtNumPas.Text = "";
+            txtNumPas.Text = "0";
             rbPrimeraClase.Checked = false;
             rbEconomica.Checked = false;
             cmbPais.Text = "";
@@ -300,6 +300,7 @@ namespace AerolineApp
 
         private void frmCompras_Load(object sender, EventArgs e)
         {
+            txtNumPas.Text = "0";
             pictureBox2.SendToBack();
             pictureBox3.SendToBack();
             txtPrecio.Enabled = false;
@@ -529,7 +530,7 @@ namespace AerolineApp
             int numpas;
             if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Afganistan"))
             {
-                numpas = int.Parse(txtNumPas.Text);
+                 numpas = int.Parse(txtNumPas.Text);
                 float.Parse(txtPrecio.Text = (450 * numpas).ToString());
 
             }
@@ -575,6 +576,8 @@ namespace AerolineApp
                 numpas = int.Parse(txtNumPas.Text);
                 float.Parse(txtPrecio.Text = (500 * numpas).ToString());
             }
+            
+            
         }
 
         private void btConsultar_Click_1(object sender, EventArgs e)
@@ -601,6 +604,12 @@ namespace AerolineApp
                 msj = "El campo cédula debe ser ingresado";
                 MessageBox.Show(msj);
                 txtcedula.Focus();
+            }
+            else if (txtNumPas.Text.Equals("0"))
+            {
+                msj = "Ingrese el numero de pasajeros";
+                MessageBox.Show(msj);
+                txtNumPas.Focus();
             }
             else
             {
@@ -644,6 +653,48 @@ namespace AerolineApp
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+      
+
+      
+
+        private void txtNumPas_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            
+            
+            
+
+        }
+
+        private void txtNumPas_MouseUp(object sender, MouseEventArgs e)
+        {
+          
+        }
+
+        private void txtNumPas_TextChanged(object sender, EventArgs e)
+        {
+            if(txtNumPas.Focus() == true)
+            {
+                
+                
+                if (lstDestino.SelectedItem != null)
+                {
+                    String valor = lstDestino.SelectedItem.ToString();
+                    lstDestino.ClearSelected();
+                    //lstDestino.Text = valor;
+                }
+            }
+        }
+
+        private void frmCompras_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

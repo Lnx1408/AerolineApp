@@ -21,7 +21,7 @@ namespace CapaAccesoDatos
             try
             {
                 //String stringConexion = "server = 0.0.0.0\\sqlexpress; database = grupo2; integrated security = true";
-                String stringConexion = "server = localhost; database = Aereolinea1; integrated security = true";
+                String stringConexion = "server = localhost; database = Aereolinea; integrated security = true";
                 conexion.ConnectionString = stringConexion;
                 conexion.Open();
                 Console.WriteLine("Se ha abierto la conexión con la base de datos de Sql Server");

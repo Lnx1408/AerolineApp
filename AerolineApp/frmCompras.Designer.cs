@@ -115,6 +115,7 @@ namespace AerolineApp
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(79, 22);
             this.txtPrecio.TabIndex = 118;
+            this.txtPrecio.TextChanged += new System.EventHandler(this.txtPrecio_TextChanged);
             // 
             // txtida
             // 
@@ -247,11 +248,13 @@ namespace AerolineApp
             // 
             // txtNumPas
             // 
-            this.txtNumPas.Location = new System.Drawing.Point(340, 205);
+            this.txtNumPas.Location = new System.Drawing.Point(339, 205);
             this.txtNumPas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumPas.Name = "txtNumPas";
             this.txtNumPas.Size = new System.Drawing.Size(55, 22);
             this.txtNumPas.TabIndex = 98;
+            this.txtNumPas.TextChanged += new System.EventHandler(this.txtNumPas_TextChanged);
+            this.txtNumPas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.txtNumPas_MouseUp);
             // 
             // txtapellidos
             // 
@@ -459,8 +462,9 @@ namespace AerolineApp
             this.Controls.Add(this.label1);
             this.Name = "frmCompras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCompras";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.frmCompras_Load);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.frmCompras_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
