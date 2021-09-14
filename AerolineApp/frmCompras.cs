@@ -40,6 +40,8 @@ namespace AerolineApp
             lstOrigen.Items.Clear();
             lstDestino.Items.Clear();
             txtPrecio.Text = "";
+            dtFechaIda.Value = DateTime.Now;
+            dtFechaRegreso.Value = DateTime.Now.AddDays(1);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -304,6 +306,7 @@ namespace AerolineApp
             pictureBox2.SendToBack();
             pictureBox3.SendToBack();
             txtPrecio.Enabled = false;
+            dtFechaRegreso.Value = DateTime.Now.AddDays(1);
 
 
         }
@@ -405,7 +408,16 @@ namespace AerolineApp
 
         private void dtFechaIda_ValueChanged(object sender, EventArgs e)
         {
-            String fecha_inicio = dtFechaIda.Value.Date.ToShortDateString();
+            if(dtFechaIda.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("Porfavor elija una fecha correcta");
+                
+            }
+            else
+            {
+                String fecha_inicio = dtFechaIda.Value.Date.ToShortDateString();
+            }
+            
         }
 
         private void cmbPais_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -420,7 +432,7 @@ namespace AerolineApp
                 //TextReader leerProv;
                 if (cmbPais.Text.Equals("Ecuador"))
                 {
-                    StreamReader archivo = new StreamReader("C:\\Users\\josea\\Source\\Repos\\Lnx1408\\AerolineApp\\AerolineApp\\img\\Provincias.txt");
+                    StreamReader archivo = new StreamReader("Provincias.txt");
 
                     for (int i = 0; i < 4; i++)
                     {
@@ -436,7 +448,7 @@ namespace AerolineApp
                 }
                 else if (cmbPais.Text.Equals("Panama"))
                 {
-                    StreamReader archivo = new StreamReader("C:\\Users\\josea\\Source\\Repos\\Lnx1408\\AerolineApp\\AerolineApp\\img\\panama.txt");
+                    StreamReader archivo = new StreamReader("panama.txt");
 
                     for (int i = 0; i < 3; i++)
                     {
@@ -463,7 +475,7 @@ namespace AerolineApp
             lstDestino.Items.Clear();
             if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional José Joaquín de Olmedo - GUAYAQUIL (GYE)"))
             {
-                StreamReader archivoG = new StreamReader("C:\\Users\\josea\\Source\\Repos\\Lnx1408\\AerolineApp\\AerolineApp\\img\\destino.txt");
+                StreamReader archivoG = new StreamReader("destino.txt");
                 for (int i = 0; i < 18; i++)
                 {
                     lstDestino.Items.Add(archivoG.ReadLine());
@@ -477,7 +489,7 @@ namespace AerolineApp
             }
             else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Mariscal Lamar - CUENCA (CUE)"))
             {
-                StreamReader archivoG = new StreamReader("C:\\Users\\josea\\Source\\Repos\\Lnx1408\\AerolineApp\\AerolineApp\\img\\destino.txt");
+                StreamReader archivoG = new StreamReader("destino.txt");
                 for (int i = 0; i < 18; i++)
                 {
                     lstDestino.Items.Add(archivoG.ReadLine());
@@ -485,7 +497,7 @@ namespace AerolineApp
             }
             else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional Mariscal Sucre - QUITO (UIO)"))
             {
-                StreamReader archivoG = new StreamReader("C:\\Users\\josea\\Source\\Repos\\Lnx1408\\AerolineApp\\AerolineApp\\img\\destino.txt");
+                StreamReader archivoG = new StreamReader("destino.txt");
                 for (int i = 0; i < 18; i++)
                 {
                     lstDestino.Items.Add(archivoG.ReadLine());
@@ -493,7 +505,7 @@ namespace AerolineApp
             }
             else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional de Santa Rosa - SANTA ROSA (ETR)"))
             {
-                StreamReader archivoG = new StreamReader("C:\\Users\\josea\\Source\\Repos\\Lnx1408\\AerolineApp\\AerolineApp\\img\\destino.txt");
+                StreamReader archivoG = new StreamReader("destino.txt");
                 for (int i = 0; i < 18; i++)
                 {
                     lstDestino.Items.Add(archivoG.ReadLine());
@@ -501,7 +513,7 @@ namespace AerolineApp
             }
             else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto de Achutupu - ACHUTUPU (ACU)"))
             {
-                StreamReader archivoG = new StreamReader("C:\\Users\\josea\\Source\\Repos\\Lnx1408\\AerolineApp\\AerolineApp\\img\\destino.txt");
+                StreamReader archivoG = new StreamReader("destino.txt");
                 for (int i = 0; i < 18; i++)
                 {
                     lstDestino.Items.Add(archivoG.ReadLine());
@@ -509,7 +521,7 @@ namespace AerolineApp
             }
             else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional Panamá Pacífico - ARRAIJÁN (BLB)"))
             {
-                StreamReader archivoG = new StreamReader("C:\\Users\\josea\\Source\\Repos\\Lnx1408\\AerolineApp\\AerolineApp\\img\\destino.txt");
+                StreamReader archivoG = new StreamReader("destino.txt");
                 for (int i = 0; i < 18; i++)
                 {
                     lstDestino.Items.Add(archivoG.ReadLine());
@@ -517,7 +529,7 @@ namespace AerolineApp
             }
             else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional de Bocas del Toro Isla Colón - BOCAS DE TORO (BOC)"))
             {
-                StreamReader archivoG = new StreamReader("C:\\Users\\josea\\Source\\Repos\\Lnx1408\\AerolineApp\\AerolineApp\\img\\destino.txt");
+                StreamReader archivoG = new StreamReader("destino.txt");
                 for (int i = 0; i < 18; i++)
                 {
                     lstDestino.Items.Add(archivoG.ReadLine());
@@ -611,6 +623,15 @@ namespace AerolineApp
                 MessageBox.Show(msj);
                 txtNumPas.Focus();
             }
+            else if(dtFechaIda.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("El valor de las fecha de partida no es correcto");
+                
+            }
+            else if(dtFechaRegreso.Value.Date <= DateTime.Now.Date)
+            {
+                MessageBox.Show("El valor de las fecha de retorno no es correcto");
+            }
             else
             {
                 try
@@ -680,8 +701,9 @@ namespace AerolineApp
                 
                 if (lstDestino.SelectedItem != null)
                 {
-                    String valor = lstDestino.SelectedItem.ToString();
+                    //String valor = lstDestino.SelectedItem.ToString();
                     lstDestino.ClearSelected();
+                    txtPrecio.Text = "";
                     //lstDestino.Text = valor;
                 }
             }
@@ -695,6 +717,19 @@ namespace AerolineApp
         private void txtPrecio_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dtFechaRegreso_ValueChanged_1(object sender, EventArgs e)
+        {
+            if (dtFechaRegreso.Value.Date <= DateTime.Now.Date)
+            {
+                MessageBox.Show("Porfavor elija una fecha correcta");
+
+            }
+            else
+            {
+                String fecha_regreso = dtFechaRegreso.Value.Date.ToShortDateString();
+            }
         }
     }
 }

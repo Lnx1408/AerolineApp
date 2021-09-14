@@ -107,6 +107,7 @@ namespace AerolineApp
             this.dtFechaRegreso.Name = "dtFechaRegreso";
             this.dtFechaRegreso.Size = new System.Drawing.Size(200, 22);
             this.dtFechaRegreso.TabIndex = 115;
+            this.dtFechaRegreso.ValueChanged += new System.EventHandler(this.dtFechaRegreso_ValueChanged_1);
             // 
             // txtPrecio
             // 
