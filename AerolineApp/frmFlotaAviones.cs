@@ -15,6 +15,8 @@ namespace AerolineApp
         public frmFlotaAviones()
         {
             InitializeComponent();
+
+            //olakease
         }
     }
 }
