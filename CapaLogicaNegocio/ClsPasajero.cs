@@ -131,12 +131,12 @@ namespace CapaLogicaNegocio
 
         public Tuple<List<Object>,SqlDataAdapter>listar()
         {
-            return M.listar_alumno();
+            return M.listar_vuelo();
         }
 
         public List<Object> Listar_Cedula(String Cedula)
         {
-            return M.listar_alumno_Cedula(Cedula);
+            return M.listar_Com(Cedula);
         }
 
         //Lista alumnos
