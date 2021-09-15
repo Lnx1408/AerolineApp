@@ -66,7 +66,8 @@ namespace AerolineApp
         public void BuscarxPais() {
             dgv_Destinos.Rows.Clear();
             dgv_Destinos.Refresh();
-            lst_destinos_tmp = destinoTemp.MostrarDestino().Item1;
+            lst_destinos_tmp = destinoTemp.BusquedaPaises(txtPais.Text).Item1;
+            this.registros = destinoTemp.MostrarDestino().Item2;
 
             //Se recorre la lista de objetos y se trabaja con los tipos de datos anonymus
             foreach (var destino in lst_destinos_tmp)

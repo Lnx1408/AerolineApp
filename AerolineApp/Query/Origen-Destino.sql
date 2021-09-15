@@ -11,5 +11,6 @@ foto varchar(200));
 
 select idDestino, lugarDestino, Aeropuerto, Ciudad, foto from Destino;
 
+select idDestino, lugarDestino, Aeropuerto, Ciudad, foto from destino group by lugarDestino;
 -- delete from Destino;
 select max(idDestino)+1 as numero from destino;

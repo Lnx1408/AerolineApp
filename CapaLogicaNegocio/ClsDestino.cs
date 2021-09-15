@@ -96,6 +96,11 @@ namespace CapaLogicaNegocio
         {
             return manejadorDestinos.listar_Destino();
         }
+
+        public Tuple<List<Object>, SqlDataAdapter> BusquedaPaises(String pais)
+        {
+            return manejadorDestinos.listar_por_Paises(pais);
+        }
         public List<Object> MostrarPaises() 
         {
             return manejadorDestinos.listar_paises();

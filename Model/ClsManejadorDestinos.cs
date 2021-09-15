@@ -111,7 +111,31 @@ namespace CapaAccesoDatos
                 lstDestino.Add(tmp);
             }
             cerrarConexion(conexion);
-            return Tuple.Create(lstDestino, RegistroAdapter); ;
+            return Tuple.Create(lstDestino, RegistroAdapter);
+        }
+        public Tuple<List<Object>, SqlDataAdapter> listar_por_Paises(String pais)
+        {
+            List<Object> lstDestino = new List<Object>();
+
+            SqlConnection conexion = abrirConexion();
+            string cadena = "select idDestino, lugarDestino, Aeropuerto, Ciudad, foto from destino where lugarDestino = '"+pais+"'";
+            SqlCommand comando = new SqlCommand(cadena, conexion);
+            SqlDataAdapter RegistroAdapter = new SqlDataAdapter(cadena, conexion);
+            SqlDataReader registros = comando.ExecuteReader();
+            while (registros.Read())
+            {
+                var tmp = new
+                {
+                    idDestino = int.Parse(registros["idDestino"].ToString()),
+                    lugarDestino = registros["lugarDestino"].ToString(),
+                    Aeropuerto = registros["Aeropuerto"].ToString(),
+                    Ciudad = registros["Ciudad"].ToString(),
+                    Foto = registros["foto"].ToString()
+                };
+                lstDestino.Add(tmp);
+            }
+            cerrarConexion(conexion);
+            return Tuple.Create(lstDestino, RegistroAdapter);
         }
         public List<Object> listar_paises() 
         {
