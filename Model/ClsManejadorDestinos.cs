@@ -178,13 +178,16 @@ namespace CapaAccesoDatos
             return NMax;
         }
 
-        public String ModificarDestino(int idDestino, string lugarDestino,string Aeropuerto, string Ciudad,string Foto)
+        public String ModificarDestino(int idDestino, string lugarDestino,
+            string Aeropuerto, string Ciudad,string Foto)
         {
             String Msj = "";
             try
             {
                 SqlConnection conexion = abrirConexion();
-                String actualizar = "update destino set lugarDestino = @lugarDestino, Aeropuerto= @Aeropuerto, Ciudad= @Ciudad, foto = @foto where idDestino = @idDestino";
+                String actualizar = "update destino set lugarDestino = @lugarDestino," +
+                    " Aeropuerto= @Aeropuerto, Ciudad= @Ciudad," +
+                    " foto = @foto where idDestino = @idDestino";
                 SqlCommand comando = new SqlCommand(actualizar, conexion);
                 comando.Parameters.AddWithValue("@idDestino", idDestino);
                 comando.Parameters.AddWithValue("@lugarDestino", lugarDestino);
