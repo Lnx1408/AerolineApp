@@ -79,7 +79,7 @@ namespace CapaAccesoDatos
 
                 //command.ExecuteNonQuery();
                 int t = Convert.ToInt32(command.ExecuteScalar());
-                msj = "Registrado con éxito, " + t;
+                msj = "Compra realizada, " + t;
                 cerrarConexionSqlServer(conexionOpen);
             }
             catch (Exception ex)
@@ -98,12 +98,12 @@ namespace CapaAccesoDatos
                 string cadena = "DELETE FROM compra WHERE Cedula = " + Cedula;
                 SqlCommand command = new SqlCommand(cadena, conexion);
                 int resultado = Convert.ToInt32(command.ExecuteScalar());
-                msj = "Alumno eliminado con éxito, " + resultado;
+                msj = "Vuelo cancelado con éxito, " + resultado;
                 cerrarConexionSqlServer(conexion);
             }
             catch (Exception ex)
             {
-                msj = "Alumno no eliminado";
+                msj = "Vuelo no cancelado";
                 throw ex;
             }
             return msj;
@@ -121,7 +121,7 @@ namespace CapaAccesoDatos
             }
             return existe;
         }
-        public Tuple<List<Object>,SqlDataAdapter>listar_alumno()
+        public Tuple<List<Object>,SqlDataAdapter>listar_vuelo()
         {
             List<Object> lstAlumnos = new List<Object>();
 
@@ -180,7 +180,7 @@ namespace CapaAccesoDatos
         //    }
         //    return msj;
         //}
-        public List<Object> listar_alumno_Cedula(String Cedula)
+        public List<Object> listar_Com(String Cedula)
         {
             List<Object> lstAlumnos = new List<Object>();
 
