@@ -35,7 +35,6 @@ namespace AerolineApp
 
         private void label2_Click(object sender, EventArgs e)
         {
-            this.Hide();
             frmFlotaAviones frmFlota = new frmFlotaAviones();
             frmFlota.Show();
         }

@@ -34,6 +34,8 @@ namespace AerolineApp
             txtADestino.Text = "";
             txtCiudad.Text = "";
             txtPais.Text = "";
+            pboxFotoDestino.Image = null;
+            
         }
 
         private void btmGuardar_Click(object sender, EventArgs e)

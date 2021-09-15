@@ -334,7 +334,9 @@
     <Content Include="img\Imprimir-icon.png" />
     <Content Include="img\ModificarIcon.png" />
     <Content Include="img\NoImagen.png" />
+    <Content Include="Query\CompraBD.sql" />
     <Content Include="Query\Origen-Destino.sql" />
+    <Content Include="Query\QueryCompleto.sql" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

@@ -1,5 +1,6 @@
 -- parte Neysser ---------------------------------------------------------------------------------------------
 
+use Aereolinea;
 
 CREATE TABLE FLOTA_INFO 
 (
@@ -35,11 +36,11 @@ ADD UNIQUE (usuario)
 
 
 -- -----------------------------------------------------------------------------------
-   create table Destino(
+create table Destino(
 idDestino int,
-lugarDestino varchar(20),
-Aeropuerto varchar(20),
-Ciudad varchar(20),
+lugarDestino varchar(40),
+Aeropuerto varchar(100),
+Ciudad varchar(40),
 foto varchar(200));
 
 
