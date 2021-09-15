@@ -15,9 +15,13 @@ namespace AerolineApp
     public partial class frmCompras : Form
     {
         ClsPasajero Al = new ClsPasajero();
+        List<object> listaAeropuerto;
+        ClsDestino clsDestino = new ClsDestino();
         public frmCompras()
         {
             InitializeComponent();
+            LlenarDestinosOrigen();
+            txtcedula.Focus();
             cmbPais.Items.Add("Ecuador");
             cmbPais.Items.Add("Peru");
             cmbPais.Items.Add("Panama");
@@ -38,37 +42,10 @@ namespace AerolineApp
             rbEconomica.Checked = false;
             cmbPais.Text = "";
             lstOrigen.Items.Clear();
-            lstDestino.Items.Clear();
+            //lstDestino.Items.Clear();
             txtPrecio.Text = "";
             dtFechaIda.Value = DateTime.Now;
             dtFechaRegreso.Value = DateTime.Now.AddDays(1);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmMenu fm = new frmMenu();
-            fm.Show();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void cmdregistrar_Click(object sender, EventArgs e)
@@ -330,21 +307,6 @@ namespace AerolineApp
             String fecha_inicio = dtFechaIda.Value.Date.ToShortDateString();
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtcedula_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void lstDestino_SelectedIndexChanged(object sender, EventArgs e)
         {
             int numpas;
@@ -398,11 +360,6 @@ namespace AerolineApp
             }
 
 
-
-        }
-
-        private void dtFechaRegreso_ValueChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -676,23 +633,11 @@ namespace AerolineApp
             }
         }
 
-      
-
-      
-
-        private void txtNumPas_MouseCaptureChanged(object sender, EventArgs e)
-        {
-            
-            
-            
-
-        }
 
         private void txtNumPas_MouseUp(object sender, MouseEventArgs e)
         {
           
         }
-
         private void txtNumPas_TextChanged(object sender, EventArgs e)
         {
             if(txtNumPas.Focus() == true)
@@ -729,6 +674,25 @@ namespace AerolineApp
             else
             {
                 String fecha_regreso = dtFechaRegreso.Value.Date.ToShortDateString();
+            }
+        }
+        void LlenarDestinosOrigen() 
+        {
+            
+            dgvOrigen.Rows.Clear();
+            dgvOrigen.Refresh();
+            dgvDestino.Rows.Clear();
+            dgvDestino.Refresh();
+            listaAeropuerto = clsDestino.MostrarDestino().Item1;
+            
+            foreach (var Aeropuerto in listaAeropuerto)
+            {
+                System.Type type = Aeropuerto.GetType();
+                
+                String pais = type.GetProperty("lugarDestino").GetValue(Aeropuerto).ToString();
+                String NombreAeropuerto = (String)type.GetProperty("Aeropuerto").GetValue(Aeropuerto);
+                dgvOrigen.Rows.Add(pais,NombreAeropuerto);
+                dgvDestino.Rows.Add(pais, NombreAeropuerto);
             }
         }
     }
