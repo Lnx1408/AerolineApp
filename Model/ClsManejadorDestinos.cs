@@ -113,6 +113,27 @@ namespace CapaAccesoDatos
             cerrarConexion(conexion);
             return Tuple.Create(lstDestino, RegistroAdapter); ;
         }
+        public List<Object> listar_paises() 
+        {
+            List<Object> lstPaises = new List<Object>();
+
+            SqlConnection conexion = abrirConexion();
+            string cadena = "select distinct lugarDestino from destino";
+            SqlCommand comando = new SqlCommand(cadena, conexion);
+            SqlDataAdapter RegistroAdapter = new SqlDataAdapter(cadena, conexion);
+            SqlDataReader registros = comando.ExecuteReader();
+            while (registros.Read())
+            {
+                var tmp = new
+                {
+                    
+                    lugarDestino = registros["lugarDestino"].ToString()
+                };
+                lstPaises.Add(tmp);
+            }
+            cerrarConexion(conexion);
+            return lstPaises;
+        }
         public string ObtenerIDMax()
         {
             String NMax="";

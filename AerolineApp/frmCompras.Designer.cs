@@ -41,9 +41,7 @@ namespace AerolineApp
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.rbEjecutiva = new System.Windows.Forms.RadioButton();
-            this.cmbPais = new System.Windows.Forms.ComboBox();
-            this.lstDestino = new System.Windows.Forms.ListBox();
-            this.lstOrigen = new System.Windows.Forms.ListBox();
+            this.cboxPaisOrigen = new System.Windows.Forms.ComboBox();
             this.rbPrimeraClase = new System.Windows.Forms.RadioButton();
             this.rbEconomica = new System.Windows.Forms.RadioButton();
             this.lblNacionalidad = new System.Windows.Forms.Label();
@@ -66,13 +64,15 @@ namespace AerolineApp
             this.btnVolver = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dgvOrigen = new System.Windows.Forms.DataGridView();
-            this.dgvDestino = new System.Windows.Forms.DataGridView();
             this.pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aeropuerto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDestino = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboxPaisDestino = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.lstOrigen = new System.Windows.Forms.ListBox();
+            this.lstDestino = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -187,35 +187,15 @@ namespace AerolineApp
             this.rbEjecutiva.Text = "Ejecutiva";
             this.rbEjecutiva.UseVisualStyleBackColor = true;
             // 
-            // cmbPais
+            // cboxPaisOrigen
             // 
-            this.cmbPais.FormattingEnabled = true;
-            this.cmbPais.Location = new System.Drawing.Point(244, 248);
-            this.cmbPais.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbPais.Name = "cmbPais";
-            this.cmbPais.Size = new System.Drawing.Size(92, 21);
-            this.cmbPais.TabIndex = 105;
-            this.cmbPais.SelectedIndexChanged += new System.EventHandler(this.cmbPais_SelectedIndexChanged_1);
-            // 
-            // lstDestino
-            // 
-            this.lstDestino.FormattingEnabled = true;
-            this.lstDestino.Location = new System.Drawing.Point(601, 392);
-            this.lstDestino.Margin = new System.Windows.Forms.Padding(2);
-            this.lstDestino.Name = "lstDestino";
-            this.lstDestino.Size = new System.Drawing.Size(161, 30);
-            this.lstDestino.TabIndex = 104;
-            this.lstDestino.SelectedIndexChanged += new System.EventHandler(this.lstDestino_SelectedIndexChanged_1);
-            // 
-            // lstOrigen
-            // 
-            this.lstOrigen.FormattingEnabled = true;
-            this.lstOrigen.Location = new System.Drawing.Point(601, 426);
-            this.lstOrigen.Margin = new System.Windows.Forms.Padding(2);
-            this.lstOrigen.Name = "lstOrigen";
-            this.lstOrigen.Size = new System.Drawing.Size(161, 30);
-            this.lstOrigen.TabIndex = 103;
-            this.lstOrigen.SelectedIndexChanged += new System.EventHandler(this.lstOrigen_SelectedIndexChanged_1);
+            this.cboxPaisOrigen.FormattingEnabled = true;
+            this.cboxPaisOrigen.Location = new System.Drawing.Point(244, 248);
+            this.cboxPaisOrigen.Margin = new System.Windows.Forms.Padding(2);
+            this.cboxPaisOrigen.Name = "cboxPaisOrigen";
+            this.cboxPaisOrigen.Size = new System.Drawing.Size(92, 21);
+            this.cboxPaisOrigen.TabIndex = 105;
+            this.cboxPaisOrigen.SelectedIndexChanged += new System.EventHandler(this.cmbPais_SelectedIndexChanged_1);
             // 
             // rbPrimeraClase
             // 
@@ -273,7 +253,6 @@ namespace AerolineApp
             this.txtNumPas.Size = new System.Drawing.Size(159, 20);
             this.txtNumPas.TabIndex = 98;
             this.txtNumPas.TextChanged += new System.EventHandler(this.txtNumPas_TextChanged);
-            //this.txtNumPas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumPas_KeyPress);
             this.txtNumPas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.txtNumPas_MouseUp);
             // 
             // txtapellidos
@@ -283,8 +262,6 @@ namespace AerolineApp
             this.txtapellidos.Name = "txtapellidos";
             this.txtapellidos.Size = new System.Drawing.Size(158, 20);
             this.txtapellidos.TabIndex = 97;
-            //this.txtapellidos.TextChanged += new System.EventHandler(this.txtapellidos_TextChanged);
-            //this.txtapellidos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtapellidos_KeyPress);
             // 
             // txtnombres
             // 
@@ -293,7 +270,6 @@ namespace AerolineApp
             this.txtnombres.Name = "txtnombres";
             this.txtnombres.Size = new System.Drawing.Size(158, 20);
             this.txtnombres.TabIndex = 96;
-            //this.txtnombres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnombres_KeyPress);
             // 
             // txtcedula
             // 
@@ -302,8 +278,6 @@ namespace AerolineApp
             this.txtcedula.Name = "txtcedula";
             this.txtcedula.Size = new System.Drawing.Size(158, 20);
             this.txtcedula.TabIndex = 95;
-            //this.txtcedula.TextChanged += new System.EventHandler(this.txtcedula_TextChanged_1);
-            //this.txtcedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcedula_KeyPress);
             // 
             // label4
             // 
@@ -466,6 +440,20 @@ namespace AerolineApp
             this.dgvOrigen.Size = new System.Drawing.Size(418, 100);
             this.dgvOrigen.TabIndex = 120;
             // 
+            // pais
+            // 
+            this.pais.HeaderText = "Pais";
+            this.pais.Name = "pais";
+            this.pais.ReadOnly = true;
+            this.pais.Width = 75;
+            // 
+            // aeropuerto
+            // 
+            this.aeropuerto.HeaderText = "Aeropuerto";
+            this.aeropuerto.Name = "aeropuerto";
+            this.aeropuerto.ReadOnly = true;
+            this.aeropuerto.Width = 300;
+            // 
             // dgvDestino
             // 
             this.dgvDestino.AllowUserToAddRows = false;
@@ -481,20 +469,6 @@ namespace AerolineApp
             this.dgvDestino.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDestino.Size = new System.Drawing.Size(418, 100);
             this.dgvDestino.TabIndex = 121;
-            // 
-            // pais
-            // 
-            this.pais.HeaderText = "Pais";
-            this.pais.Name = "pais";
-            this.pais.ReadOnly = true;
-            this.pais.Width = 75;
-            // 
-            // aeropuerto
-            // 
-            this.aeropuerto.HeaderText = "Aeropuerto";
-            this.aeropuerto.Name = "aeropuerto";
-            this.aeropuerto.ReadOnly = true;
-            this.aeropuerto.Width = 300;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -518,6 +492,7 @@ namespace AerolineApp
             this.cboxPaisDestino.Name = "cboxPaisDestino";
             this.cboxPaisDestino.Size = new System.Drawing.Size(92, 21);
             this.cboxPaisDestino.TabIndex = 123;
+            this.cboxPaisDestino.SelectedIndexChanged += new System.EventHandler(this.cboxPaisDestino_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -529,6 +504,24 @@ namespace AerolineApp
             this.label12.Size = new System.Drawing.Size(38, 16);
             this.label12.TabIndex = 122;
             this.label12.Text = "Pais:";
+            // 
+            // lstOrigen
+            // 
+            this.lstOrigen.FormattingEnabled = true;
+            this.lstOrigen.Location = new System.Drawing.Point(601, 426);
+            this.lstOrigen.Margin = new System.Windows.Forms.Padding(2);
+            this.lstOrigen.Name = "lstOrigen";
+            this.lstOrigen.Size = new System.Drawing.Size(161, 30);
+            this.lstOrigen.TabIndex = 103;
+            // 
+            // lstDestino
+            // 
+            this.lstDestino.FormattingEnabled = true;
+            this.lstDestino.Location = new System.Drawing.Point(601, 392);
+            this.lstDestino.Margin = new System.Windows.Forms.Padding(2);
+            this.lstDestino.Name = "lstDestino";
+            this.lstDestino.Size = new System.Drawing.Size(161, 30);
+            this.lstDestino.TabIndex = 104;
             // 
             // frmCompras
             // 
@@ -553,7 +546,7 @@ namespace AerolineApp
             this.Controls.Add(this.btConsultar);
             this.Controls.Add(this.cmdregistrar);
             this.Controls.Add(this.rbEjecutiva);
-            this.Controls.Add(this.cmbPais);
+            this.Controls.Add(this.cboxPaisOrigen);
             this.Controls.Add(this.lstDestino);
             this.Controls.Add(this.lstOrigen);
             this.Controls.Add(this.rbPrimeraClase);
@@ -605,9 +598,7 @@ namespace AerolineApp
         private System.Windows.Forms.Button btConsultar;
         private System.Windows.Forms.Button cmdregistrar;
         private System.Windows.Forms.RadioButton rbEjecutiva;
-        private System.Windows.Forms.ComboBox cmbPais;
-        private System.Windows.Forms.ListBox lstDestino;
-        private System.Windows.Forms.ListBox lstOrigen;
+        private System.Windows.Forms.ComboBox cboxPaisOrigen;
         private System.Windows.Forms.RadioButton rbPrimeraClase;
         private System.Windows.Forms.RadioButton rbEconomica;
         private System.Windows.Forms.Label lblNacionalidad;
@@ -632,5 +623,7 @@ namespace AerolineApp
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.ComboBox cboxPaisDestino;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ListBox lstOrigen;
+        private System.Windows.Forms.ListBox lstDestino;
     }
 }

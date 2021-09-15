@@ -21,16 +21,15 @@ namespace AerolineApp
         {
             InitializeComponent();
             LlenarDestinosOrigen();
+            llenarlstPais();
             txtcedula.Focus();
-            cmbPais.Items.Add("Ecuador");
-            cmbPais.Items.Add("Peru");
-            cmbPais.Items.Add("Panama");
-            cmbPais.Items.Add("Estados Unidos");
-            cmbPais.Items.Add("Mexico");
-            cmbPais.Items.Add("Londres");
-
-
-
+            /*
+            cboxPaisOrigen.Items.Add("Ecuador");
+            cboxPaisOrigen.Items.Add("Peru");
+            cboxPaisOrigen.Items.Add("Panama");
+            cboxPaisOrigen.Items.Add("Estados Unidos");
+            cboxPaisOrigen.Items.Add("Mexico");
+            cboxPaisOrigen.Items.Add("Londres");*/
         }
         private void limpiar_celdas()
         {
@@ -40,243 +39,13 @@ namespace AerolineApp
             txtNumPas.Text = "0";
             rbPrimeraClase.Checked = false;
             rbEconomica.Checked = false;
-            cmbPais.Text = "";
+            cboxPaisOrigen.Text = "";
             lstOrigen.Items.Clear();
             //lstDestino.Items.Clear();
             txtPrecio.Text = "";
             dtFechaIda.Value = DateTime.Now;
             dtFechaRegreso.Value = DateTime.Now.AddDays(1);
         }
-
-        private void cmdregistrar_Click(object sender, EventArgs e)
-        {
-
-            String msj = "";
-            String varCi = txtcedula.Text.Trim();
-
-            if (txtcedula.Text.Equals(""))
-            {
-                msj = "El campo cédula debe ser ingresado";
-                MessageBox.Show(msj);
-                txtcedula.Focus();
-            }
-            else
-            {
-                try
-                {
-
-                    Al.Cedula = txtcedula.Text;
-                    Al.Cedula = txtcedula.Text;
-                    Al.Nombres = txtnombres.Text;
-                    Al.Apellidos = txtapellidos.Text;
-                    Al.NumPas = Int16.Parse(txtNumPas.Text);
-                    if (rbPrimeraClase.Checked == true)
-                    {
-                        Al.Clase = "Primera Clase";
-                    }
-                    else if (rbEconomica.Checked == true)
-                    {
-                        Al.Clase = "Económica";
-                    }
-                    else
-                    {
-                        Al.Clase = "Ejecutiva";
-                    }
-                    Al.Pais = cmbPais.Text;
-                    Al.Origen = lstOrigen.Text;
-                    Al.Destino = lstDestino.Text;
-                    Al.Precio = float.Parse(txtPrecio.Text);
-                    msj = Al.registrar(varCi);
-                    MessageBox.Show(msj);
-
-                    limpiar_celdas();
-                    txtcedula.Focus();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        private void lstOrigen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lstDestino.Items.Clear();
-            if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional José Joaquín de Olmedo - GUAYAQUIL (GYE)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-
-                }
-                //if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Afganistan"))
-                //{
-                //    txtPrecio.Text = 450.ToString();
-                //}
-
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Mariscal Lamar - CUENCA (CUE)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional Mariscal Sucre - QUITO (UIO)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional de Santa Rosa - SANTA ROSA (ETR)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto de Achutupu - ACHUTUPU (ACU)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional Panamá Pacífico - ARRAIJÁN (BLB)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional de Bocas del Toro Isla Colón - BOCAS DE TORO (BOC)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-        }
-
-        private void cmbPais_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lstOrigen.Items.Clear();
-            lstDestino.Items.Clear();
-            // MessageBox.Show(cmbNacionalidad.GetItemText(cmbNacionalidad.SelectedItem));
-
-            try
-            {
-                //TextReader leerProv;
-                if (cmbPais.Text.Equals("Ecuador"))
-                {
-                    StreamReader archivo = new StreamReader("Provincias.txt");
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        lstOrigen.Items.Add(archivo.ReadLine());
-
-                    }
-
-                    //archivo.ReadToEnd();
-                    //archivo.DiscardBufferedData();
-                    //archivo.Dispose();
-                    archivo.Close();
-
-                }
-                else if (cmbPais.Text.Equals("Panama"))
-                {
-                    StreamReader archivo = new StreamReader("panama.txt");
-
-                    for (int i = 0; i < 3; i++)
-                    {
-                        lstOrigen.Items.Add(archivo.ReadLine());
-
-                    }
-
-
-                    archivo.Close();
-                }
-
-
-
-            }
-            catch (Exception j)
-            {
-                MessageBox.Show("Error el archivo no existe: " +j);
-            }
-        }
-
-        private void btmGuardar_Click(object sender, EventArgs e)
-        {
-            String msj = "";
-            String varCi = txtcedula.Text.Trim();
-
-
-            if (txtcedula.Text.Equals(""))
-            {
-                msj = "El campo cédula debe ser ingresado";
-                MessageBox.Show(msj);
-                txtcedula.Focus();
-            }
-            else
-            {
-                try
-                {
-
-                    Al.Cedula = txtcedula.Text;
-                    Al.Cedula = txtcedula.Text;
-                    Al.Nombres = txtnombres.Text;
-                    Al.Apellidos = txtapellidos.Text;
-                    Al.NumPas = Int16.Parse(txtNumPas.Text);
-                    if (rbPrimeraClase.Checked == true)
-                    {
-                        Al.Clase = "Primera Clase";
-                    }
-                    else if (rbEconomica.Checked == true)
-                    {
-                        Al.Clase = "Económica";
-                    }
-                    else
-                    {
-                        Al.Clase = "Ejecutiva";
-                    }
-                    Al.Pais = cmbPais.Text;
-                    Al.Origen = lstOrigen.Text;
-                    Al.Destino = lstDestino.Text;
-                    Al.FechaIda = dtFechaIda.Value.ToLongDateString();
-                    Al.FechaRegreso = dtFechaRegreso.Value.ToLongDateString();
-                    Al.Precio = float.Parse(txtPrecio.Text);
-                    MessageBox.Show(Al.registrar(varCi));
-
-                    limpiar_celdas();
-                    txtcedula.Focus();
-
-
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        private void txtconsultar_Click(object sender, EventArgs e)
-        {
-            frmConsultarCompra frmEstCons = new frmConsultarCompra(Al);
-            frmEstCons.Show();
-        }
-
         private void frmCompras_Load(object sender, EventArgs e)
         {
             txtNumPas.Text = "0";
@@ -284,81 +53,6 @@ namespace AerolineApp
             pictureBox3.SendToBack();
             txtPrecio.Enabled = false;
             dtFechaRegreso.Value = DateTime.Now.AddDays(1);
-
-
-        }
-
-        private void btConsultar_Click(object sender, EventArgs e)
-        {
-            //Al.FechaIda = dtFechaIda.ToString();
-            //MessageBox.Show(dtFechaIda.Value.ToLongDateString());   
-            frmConsultarCompra frmCons = new frmConsultarCompra(Al);
-            frmCons.Show();
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            String fecha_inicio = dtFechaIda.Value.Date.ToShortDateString();
-        }
-
-        private void lstDestino_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int numpas;
-            if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Afganistan"))
-            {
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (450 * numpas).ToString());
-
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Albania"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (400 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Alemania"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (600 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Paraguay"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (200 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Perú"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (180 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Polonia"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (350 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Andorra"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (275 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Angola"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (500 * numpas).ToString());
-            }
-
 
 
         }
@@ -379,53 +73,25 @@ namespace AerolineApp
 
         private void cmbPais_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            dgvOrigen.Rows.Clear();
+            dgvOrigen.Refresh();
+            listaAeropuerto = clsDestino.MostrarDestino().Item1;
 
-            lstOrigen.Items.Clear();
-            lstDestino.Items.Clear();
+            foreach (var Aeropuerto in listaAeropuerto)
+            {
+                System.Type type = Aeropuerto.GetType();
+
+                String pais = type.GetProperty("lugarDestino").GetValue(Aeropuerto).ToString();
+                if (cboxPaisOrigen.SelectedItem.ToString().Equals(pais))
+                {
+                    String NombreAeropuerto = (String)type.GetProperty("Aeropuerto").GetValue(Aeropuerto);
+                    dgvOrigen.Rows.Add(pais, NombreAeropuerto);
+                }
+            }
+        }
+
             // MessageBox.Show(cmbNacionalidad.GetItemText(cmbNacionalidad.SelectedItem));
 
-            try
-            {
-                //TextReader leerProv;
-                if (cmbPais.Text.Equals("Ecuador"))
-                {
-                    StreamReader archivo = new StreamReader("Provincias.txt");
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        lstOrigen.Items.Add(archivo.ReadLine());
-
-                    }
-
-                    //archivo.ReadToEnd();
-                    //archivo.DiscardBufferedData();
-                    //archivo.Dispose();
-                    archivo.Close();
-
-                }
-                else if (cmbPais.Text.Equals("Panama"))
-                {
-                    StreamReader archivo = new StreamReader("panama.txt");
-
-                    for (int i = 0; i < 3; i++)
-                    {
-                        lstOrigen.Items.Add(archivo.ReadLine());
-
-                    }
-
-
-                    archivo.Close();
-                }
-
-
-
-            }
-            catch (Exception j)
-            {
-                MessageBox.Show("Error el archivo no existe: " +j);
-            }
-
-        }
 
         private void lstOrigen_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -611,7 +277,7 @@ namespace AerolineApp
                     {
                         Al.Clase = "Ejecutiva";
                     }
-                    Al.Pais = cmbPais.Text;
+                    Al.Pais = cboxPaisOrigen.Text;
                     Al.Origen = lstOrigen.Text;
                     Al.Destino = lstDestino.Text;
                     Al.FechaIda = dtFechaIda.Value.ToLongDateString();
@@ -695,5 +361,43 @@ namespace AerolineApp
                 dgvDestino.Rows.Add(pais, NombreAeropuerto);
             }
         }
+
+        void llenarlstPais() 
+        {
+            cboxPaisOrigen.Refresh();
+            cboxPaisOrigen.Items.Clear();
+            cboxPaisDestino.Refresh();
+            cboxPaisDestino.Items.Clear();
+            listaAeropuerto = clsDestino.MostrarPaises();
+
+            foreach (var Aeropuerto in listaAeropuerto)
+            {
+                System.Type type = Aeropuerto.GetType();
+
+                String pais = type.GetProperty("lugarDestino").GetValue(Aeropuerto).ToString();
+                cboxPaisOrigen.Items.Add(pais);
+                cboxPaisDestino.Items.Add(pais);
+            }
+        }
+
+        private void cboxPaisDestino_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvDestino.Rows.Clear();
+            dgvDestino.Refresh();
+            listaAeropuerto = clsDestino.MostrarDestino().Item1;
+
+            foreach (var Aeropuerto in listaAeropuerto)
+            {
+                System.Type type = Aeropuerto.GetType();
+
+                String pais = type.GetProperty("lugarDestino").GetValue(Aeropuerto).ToString();
+                if (cboxPaisDestino.SelectedItem.ToString().Equals(pais))
+                {
+                    String NombreAeropuerto = (String)type.GetProperty("Aeropuerto").GetValue(Aeropuerto);
+                    dgvDestino.Rows.Add(pais, NombreAeropuerto);
+                }
+            }
+        }
     }
+
 }

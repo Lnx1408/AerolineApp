@@ -96,6 +96,10 @@ namespace CapaLogicaNegocio
         {
             return manejadorDestinos.listar_Destino();
         }
+        public List<Object> MostrarPaises() 
+        {
+            return manejadorDestinos.listar_paises();
+        }
         public string obtenerVmax() 
         {
             return manejadorDestinos.ObtenerIDMax(); 
