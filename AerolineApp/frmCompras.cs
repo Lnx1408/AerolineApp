@@ -41,7 +41,7 @@ namespace AerolineApp
             txtNumPas.Text = "0";
             rbPrimeraClase.Checked = false;
             rbEconomica.Checked = false;
-            cboxPaisOrigen.Text = "";
+            
             dgvOrigen.ClearSelection();
             dgvDestino.ClearSelection();
             //lstDestino.Items.Clear();
@@ -309,6 +309,8 @@ namespace AerolineApp
                 {
                     MessageBox.Show(ex.Message);
                 }
+
+
             }
         }
 
