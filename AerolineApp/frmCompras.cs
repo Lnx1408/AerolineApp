@@ -491,6 +491,43 @@ namespace AerolineApp
         {
 
         }
+
+        private void txtcedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarNumeros(e);
+        }
+
+        public void validarNumeros(KeyPressEventArgs k)
+        {
+            if (Char.IsDigit(k.KeyChar) || Char.IsControl(k.KeyChar))
+            {
+                k.Handled = false;
+            }
+            else k.Handled = true;
+        }
+        public void validarLetras(KeyPressEventArgs k)
+        {
+            if (Char.IsLetter(k.KeyChar) || Char.IsControl(k.KeyChar) || Char.IsSeparator(k.KeyChar))
+            {
+                k.Handled = false;
+            }
+            else k.Handled = true;
+        }
+
+        private void txtNumPas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarNumeros(e);
+        }
+
+        private void txtnombres_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarLetras(e);
+        }
+
+        private void txtapellidos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarLetras(e);
+        }
     }
 
 }

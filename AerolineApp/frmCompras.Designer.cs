@@ -244,6 +244,7 @@ namespace AerolineApp
             this.txtNumPas.Size = new System.Drawing.Size(211, 22);
             this.txtNumPas.TabIndex = 98;
             this.txtNumPas.TextChanged += new System.EventHandler(this.txtNumPas_TextChanged);
+            this.txtNumPas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumPas_KeyPress);
             this.txtNumPas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.txtNumPas_MouseUp);
             // 
             // txtapellidos
@@ -253,6 +254,7 @@ namespace AerolineApp
             this.txtapellidos.Name = "txtapellidos";
             this.txtapellidos.Size = new System.Drawing.Size(209, 22);
             this.txtapellidos.TabIndex = 97;
+            this.txtapellidos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtapellidos_KeyPress);
             // 
             // txtnombres
             // 
@@ -261,6 +263,7 @@ namespace AerolineApp
             this.txtnombres.Name = "txtnombres";
             this.txtnombres.Size = new System.Drawing.Size(209, 22);
             this.txtnombres.TabIndex = 96;
+            this.txtnombres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnombres_KeyPress);
             // 
             // txtcedula
             // 
@@ -269,6 +272,7 @@ namespace AerolineApp
             this.txtcedula.Name = "txtcedula";
             this.txtcedula.Size = new System.Drawing.Size(209, 22);
             this.txtcedula.TabIndex = 95;
+            this.txtcedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcedula_KeyPress);
             // 
             // label4
             // 
