@@ -309,8 +309,6 @@ namespace AerolineApp
                 {
                     MessageBox.Show(ex.Message);
                 }
-
-
             }
         }
 
