@@ -14,6 +14,8 @@ namespace AerolineApp
 {
     public partial class frmCompras : Form
     {
+        int numpas = 0;
+        
         ClsPasajero Al = new ClsPasajero();
         List<object> listaAeropuerto;
         ClsDestino clsDestino = new ClsDestino();
@@ -40,7 +42,8 @@ namespace AerolineApp
             rbPrimeraClase.Checked = false;
             rbEconomica.Checked = false;
             cboxPaisOrigen.Text = "";
-            lstOrigen.Items.Clear();
+            dgvOrigen.ClearSelection();
+            dgvDestino.ClearSelection();
             //lstDestino.Items.Clear();
             txtPrecio.Text = "";
             dtFechaIda.Value = DateTime.Now;
@@ -53,6 +56,8 @@ namespace AerolineApp
             pictureBox3.SendToBack();
             txtPrecio.Enabled = false;
             dtFechaRegreso.Value = DateTime.Now.AddDays(1);
+            dgvOrigen.ClearSelection();
+            dgvDestino.ClearSelection();
 
 
         }
@@ -86,6 +91,10 @@ namespace AerolineApp
                 {
                     String NombreAeropuerto = (String)type.GetProperty("Aeropuerto").GetValue(Aeropuerto);
                     dgvOrigen.Rows.Add(pais, NombreAeropuerto);
+                    if (cboxPaisOrigen.Text != null)
+                    {
+                        dgvOrigen.ClearSelection();
+                    }
                 }
             }
         }
@@ -93,127 +102,127 @@ namespace AerolineApp
             // MessageBox.Show(cmbNacionalidad.GetItemText(cmbNacionalidad.SelectedItem));
 
 
-        private void lstOrigen_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            lstDestino.Items.Clear();
-            if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional José Joaquín de Olmedo - GUAYAQUIL (GYE)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
+        //private void lstOrigen_SelectedIndexChanged_1(object sender, EventArgs e)
+        //{
+        //    lstDestino.Items.Clear();
+        //    if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional José Joaquín de Olmedo - GUAYAQUIL (GYE)"))
+        //    {
+        //        StreamReader archivoG = new StreamReader("destino.txt");
+        //        for (int i = 0; i < 18; i++)
+        //        {
+        //            lstDestino.Items.Add(archivoG.ReadLine());
 
-                }
-                //if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Afganistan"))
-                //{
-                //    txtPrecio.Text = 450.ToString();
-                //}
+        //        }
+        //        //if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Afganistan"))
+        //        //{
+        //        //    txtPrecio.Text = 450.ToString();
+        //        //}
 
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Mariscal Lamar - CUENCA (CUE)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional Mariscal Sucre - QUITO (UIO)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional de Santa Rosa - SANTA ROSA (ETR)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto de Achutupu - ACHUTUPU (ACU)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional Panamá Pacífico - ARRAIJÁN (BLB)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-            else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional de Bocas del Toro Isla Colón - BOCAS DE TORO (BOC)"))
-            {
-                StreamReader archivoG = new StreamReader("destino.txt");
-                for (int i = 0; i < 18; i++)
-                {
-                    lstDestino.Items.Add(archivoG.ReadLine());
-                }
-            }
-        }
+        //    }
+        //    else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Mariscal Lamar - CUENCA (CUE)"))
+        //    {
+        //        StreamReader archivoG = new StreamReader("destino.txt");
+        //        for (int i = 0; i < 18; i++)
+        //        {
+        //            lstDestino.Items.Add(archivoG.ReadLine());
+        //        }
+        //    }
+        //    else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional Mariscal Sucre - QUITO (UIO)"))
+        //    {
+        //        StreamReader archivoG = new StreamReader("destino.txt");
+        //        for (int i = 0; i < 18; i++)
+        //        {
+        //            lstDestino.Items.Add(archivoG.ReadLine());
+        //        }
+        //    }
+        //    else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional de Santa Rosa - SANTA ROSA (ETR)"))
+        //    {
+        //        StreamReader archivoG = new StreamReader("destino.txt");
+        //        for (int i = 0; i < 18; i++)
+        //        {
+        //            lstDestino.Items.Add(archivoG.ReadLine());
+        //        }
+        //    }
+        //    else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto de Achutupu - ACHUTUPU (ACU)"))
+        //    {
+        //        StreamReader archivoG = new StreamReader("destino.txt");
+        //        for (int i = 0; i < 18; i++)
+        //        {
+        //            lstDestino.Items.Add(archivoG.ReadLine());
+        //        }
+        //    }
+        //    else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional Panamá Pacífico - ARRAIJÁN (BLB)"))
+        //    {
+        //        StreamReader archivoG = new StreamReader("destino.txt");
+        //        for (int i = 0; i < 18; i++)
+        //        {
+        //            lstDestino.Items.Add(archivoG.ReadLine());
+        //        }
+        //    }
+        //    else if (lstOrigen.GetItemText(lstOrigen.SelectedItem).Equals("Aeropuerto Internacional de Bocas del Toro Isla Colón - BOCAS DE TORO (BOC)"))
+        //    {
+        //        StreamReader archivoG = new StreamReader("destino.txt");
+        //        for (int i = 0; i < 18; i++)
+        //        {
+        //            lstDestino.Items.Add(archivoG.ReadLine());
+        //        }
+        //    }
+        //}
 
-        private void lstDestino_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            int numpas;
-            if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Afganistan"))
-            {
-                 numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (450 * numpas).ToString());
+        //private void lstDestino_SelectedIndexChanged_1(object sender, EventArgs e)
+        //{
+        //    int numpas;
+        //    if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Afganistan"))
+        //    {
+        //         numpas = int.Parse(txtNumPas.Text);
+        //        float.Parse(txtPrecio.Text = (450 * numpas).ToString());
 
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Albania"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (400 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Alemania"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (600 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Paraguay"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (200 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Perú"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (180 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Polonia"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (350 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Andorra"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (275 * numpas).ToString());
-            }
-            else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Angola"))
-            {
-                txtPrecio.Clear();
-                numpas = int.Parse(txtNumPas.Text);
-                float.Parse(txtPrecio.Text = (500 * numpas).ToString());
-            }
+        //    }
+        //    else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Albania"))
+        //    {
+        //        txtPrecio.Clear();
+        //        numpas = int.Parse(txtNumPas.Text);
+        //        float.Parse(txtPrecio.Text = (400 * numpas).ToString());
+        //    }
+        //    else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Alemania"))
+        //    {
+        //        txtPrecio.Clear();
+        //        numpas = int.Parse(txtNumPas.Text);
+        //        float.Parse(txtPrecio.Text = (600 * numpas).ToString());
+        //    }
+        //    else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Paraguay"))
+        //    {
+        //        txtPrecio.Clear();
+        //        numpas = int.Parse(txtNumPas.Text);
+        //        float.Parse(txtPrecio.Text = (200 * numpas).ToString());
+        //    }
+        //    else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Perú"))
+        //    {
+        //        txtPrecio.Clear();
+        //        numpas = int.Parse(txtNumPas.Text);
+        //        float.Parse(txtPrecio.Text = (180 * numpas).ToString());
+        //    }
+        //    else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Polonia"))
+        //    {
+        //        txtPrecio.Clear();
+        //        numpas = int.Parse(txtNumPas.Text);
+        //        float.Parse(txtPrecio.Text = (350 * numpas).ToString());
+        //    }
+        //    else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Andorra"))
+        //    {
+        //        txtPrecio.Clear();
+        //        numpas = int.Parse(txtNumPas.Text);
+        //        float.Parse(txtPrecio.Text = (275 * numpas).ToString());
+        //    }
+        //    else if (lstDestino.GetItemText(lstDestino.SelectedItem).Equals("Angola"))
+        //    {
+        //        txtPrecio.Clear();
+        //        numpas = int.Parse(txtNumPas.Text);
+        //        float.Parse(txtPrecio.Text = (500 * numpas).ToString());
+        //    }
             
             
-        }
+        //}
 
         private void btConsultar_Click_1(object sender, EventArgs e)
         {
@@ -278,8 +287,12 @@ namespace AerolineApp
                         Al.Clase = "Ejecutiva";
                     }
                     Al.Pais = cboxPaisOrigen.Text;
-                    Al.Origen = lstOrigen.Text;
-                    Al.Destino = lstDestino.Text;
+                    if(Al.Pais == "")
+                    {
+                        Al.Pais = dgvOrigen.Rows[dgvOrigen.CurrentRow.Index].Cells[0].Value.ToString();
+                    }
+                    Al.Origen = dgvOrigen.Rows[dgvOrigen.CurrentRow.Index].Cells[1].Value.ToString();
+                    Al.Destino = dgvDestino.Rows[dgvDestino.CurrentRow.Index].Cells[1].Value.ToString();
                     Al.FechaIda = dtFechaIda.Value.ToLongDateString();
                     Al.FechaRegreso = dtFechaRegreso.Value.ToLongDateString();
                     Al.Precio = float.Parse(txtPrecio.Text);
@@ -287,7 +300,7 @@ namespace AerolineApp
 
                     limpiar_celdas();
                     txtcedula.Focus();
-
+                    
 
 
 
@@ -306,18 +319,28 @@ namespace AerolineApp
         }
         private void txtNumPas_TextChanged(object sender, EventArgs e)
         {
+
             if(txtNumPas.Focus() == true)
             {
-                
-                
-                if (lstDestino.SelectedItem != null)
-                {
-                    //String valor = lstDestino.SelectedItem.ToString();
-                    lstDestino.ClearSelected();
-                    txtPrecio.Text = "";
+
+                //String valor = lstDestino.SelectedItem.ToString();
+                dgvDestino.ClearSelection();
+                txtPrecio.Text = "";
                     //lstDestino.Text = valor;
-                }
+                
             }
+            //if(txtNumPas.Focus() == true)
+            //{
+
+
+            //    if (lstDestino.SelectedItem != null)
+            //    {
+            //        //String valor = lstDestino.SelectedItem.ToString();
+            //        lstDestino.ClearSelected();
+            //        txtPrecio.Text = "";
+            //        //lstDestino.Text = valor;
+            //    }
+            //}
         }
 
         private void frmCompras_MouseClick(object sender, MouseEventArgs e)
@@ -382,6 +405,7 @@ namespace AerolineApp
 
         private void cboxPaisDestino_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             dgvDestino.Rows.Clear();
             dgvDestino.Refresh();
             listaAeropuerto = clsDestino.MostrarDestino().Item1;
@@ -393,10 +417,79 @@ namespace AerolineApp
                 String pais = type.GetProperty("lugarDestino").GetValue(Aeropuerto).ToString();
                 if (cboxPaisDestino.SelectedItem.ToString().Equals(pais))
                 {
+                    
                     String NombreAeropuerto = (String)type.GetProperty("Aeropuerto").GetValue(Aeropuerto);
                     dgvDestino.Rows.Add(pais, NombreAeropuerto);
+                    if(cboxPaisDestino.Text != null)
+                    {
+                        dgvDestino.ClearSelection();
+                    }
                 }
             }
+        }
+
+        private void dgvOrigen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvDestino_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                
+                String valordest = dgvDestino.Rows[dgvDestino.CurrentRow.Index].Cells[0].Value.ToString();
+               
+
+                if (valordest == "Ecuador" )
+                {
+                    txtPrecio.Clear();
+                    numpas = int.Parse(txtNumPas.Text);
+                    float.Parse(txtPrecio.Text = (90 * numpas ).ToString());
+                }
+                else if(valordest == "Peru")
+                {
+                    txtPrecio.Clear();
+                    numpas = int.Parse(txtNumPas.Text);
+                    float.Parse(txtPrecio.Text = (110 * numpas).ToString());
+                }
+                else if(valordest == "Colombia")
+                {
+                    txtPrecio.Clear();
+                    numpas = int.Parse(txtNumPas.Text);
+                    float.Parse(txtPrecio.Text = (130 * numpas).ToString());
+                }
+                else
+                {
+                    txtPrecio.Clear();
+                    numpas = int.Parse(txtNumPas.Text);
+                    float.Parse(txtPrecio.Text = (125 * numpas).ToString());
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void dgvOrigen_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cboxPaisOrigen_Click(object sender, EventArgs e)
+        {
+            dgvOrigen.ClearSelection();
+        }
+
+        private void cboxPaisDestino_Click(object sender, EventArgs e)
+        {
+            dgvDestino.ClearSelection();
+        }
+
+        private void dgvDestino_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

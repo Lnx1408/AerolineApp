@@ -57,8 +57,9 @@ namespace AerolineApp
             this.label1.Font = new System.Drawing.Font("Century Schoolbook", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(797, 59);
+            this.label1.Size = new System.Drawing.Size(1063, 73);
             this.label1.TabIndex = 13;
             this.label1.Text = "MODIFICAR LUGAR DESTINO";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -72,9 +73,10 @@ namespace AerolineApp
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVolver.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.Image = global::AerolineApp.Properties.Resources.BTVolverCU_1;
-            this.btnVolver.Location = new System.Drawing.Point(730, 0);
+            this.btnVolver.Location = new System.Drawing.Point(973, 0);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(67, 59);
+            this.btnVolver.Size = new System.Drawing.Size(89, 73);
             this.btnVolver.TabIndex = 14;
             this.btnVolver.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVolver.UseVisualStyleBackColor = false;
@@ -89,8 +91,9 @@ namespace AerolineApp
             this.panel1.Controls.Add(this.btmConfirmar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(796, 457);
+            this.panel1.Size = new System.Drawing.Size(1061, 562);
             this.panel1.TabIndex = 15;
             // 
             // groupBox1
@@ -108,9 +111,11 @@ namespace AerolineApp
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(30)))));
-            this.groupBox1.Location = new System.Drawing.Point(89, 84);
+            this.groupBox1.Location = new System.Drawing.Point(119, 103);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(619, 224);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(825, 276);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "INGRESAR DATOS";
@@ -123,9 +128,10 @@ namespace AerolineApp
             this.btnSeleccionarFoto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateGray;
             this.btnSeleccionarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSeleccionarFoto.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeleccionarFoto.Location = new System.Drawing.Point(427, 145);
+            this.btnSeleccionarFoto.Location = new System.Drawing.Point(569, 178);
+            this.btnSeleccionarFoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSeleccionarFoto.Name = "btnSeleccionarFoto";
-            this.btnSeleccionarFoto.Size = new System.Drawing.Size(154, 31);
+            this.btnSeleccionarFoto.Size = new System.Drawing.Size(205, 38);
             this.btnSeleccionarFoto.TabIndex = 7;
             this.btnSeleccionarFoto.Text = "Seleccionar Foto";
             this.btnSeleccionarFoto.UseVisualStyleBackColor = false;
@@ -134,40 +140,45 @@ namespace AerolineApp
             // pboxFotoDestino
             // 
             this.pboxFotoDestino.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pboxFotoDestino.Location = new System.Drawing.Point(427, 35);
+            this.pboxFotoDestino.Location = new System.Drawing.Point(569, 43);
+            this.pboxFotoDestino.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pboxFotoDestino.Name = "pboxFotoDestino";
-            this.pboxFotoDestino.Size = new System.Drawing.Size(154, 102);
+            this.pboxFotoDestino.Size = new System.Drawing.Size(204, 125);
             this.pboxFotoDestino.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxFotoDestino.TabIndex = 6;
             this.pboxFotoDestino.TabStop = false;
             // 
             // txtADestino
             // 
-            this.txtADestino.Location = new System.Drawing.Point(203, 153);
+            this.txtADestino.Location = new System.Drawing.Point(271, 188);
+            this.txtADestino.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtADestino.Name = "txtADestino";
-            this.txtADestino.Size = new System.Drawing.Size(183, 23);
+            this.txtADestino.Size = new System.Drawing.Size(243, 27);
             this.txtADestino.TabIndex = 3;
             // 
             // txtCiudad
             // 
-            this.txtCiudad.Location = new System.Drawing.Point(203, 114);
+            this.txtCiudad.Location = new System.Drawing.Point(271, 140);
+            this.txtCiudad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCiudad.Name = "txtCiudad";
-            this.txtCiudad.Size = new System.Drawing.Size(183, 23);
+            this.txtCiudad.Size = new System.Drawing.Size(243, 27);
             this.txtCiudad.TabIndex = 2;
             // 
             // txtPais
             // 
-            this.txtPais.Location = new System.Drawing.Point(203, 75);
+            this.txtPais.Location = new System.Drawing.Point(271, 92);
+            this.txtPais.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(183, 23);
+            this.txtPais.Size = new System.Drawing.Size(243, 27);
             this.txtPais.TabIndex = 1;
             // 
             // txtNDestino
             // 
             this.txtNDestino.Enabled = false;
-            this.txtNDestino.Location = new System.Drawing.Point(203, 35);
+            this.txtNDestino.Location = new System.Drawing.Point(271, 43);
+            this.txtNDestino.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNDestino.Name = "txtNDestino";
-            this.txtNDestino.Size = new System.Drawing.Size(183, 23);
+            this.txtNDestino.Size = new System.Drawing.Size(243, 27);
             this.txtNDestino.TabIndex = 5;
             this.txtNDestino.Text = "0";
             this.txtNDestino.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -176,9 +187,10 @@ namespace AerolineApp
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(54, 156);
+            this.label5.Location = new System.Drawing.Point(72, 192);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(143, 16);
+            this.label5.Size = new System.Drawing.Size(183, 21);
             this.label5.TabIndex = 3;
             this.label5.Text = "Aeropuerto Destino";
             // 
@@ -186,9 +198,10 @@ namespace AerolineApp
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(54, 117);
+            this.label4.Location = new System.Drawing.Point(72, 144);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 16);
+            this.label4.Size = new System.Drawing.Size(73, 21);
             this.label4.TabIndex = 2;
             this.label4.Text = "Ciudad";
             // 
@@ -196,9 +209,10 @@ namespace AerolineApp
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 78);
+            this.label3.Location = new System.Drawing.Point(72, 96);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 16);
+            this.label3.Size = new System.Drawing.Size(48, 21);
             this.label3.TabIndex = 1;
             this.label3.Text = "Pais";
             // 
@@ -206,9 +220,10 @@ namespace AerolineApp
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(54, 35);
+            this.label2.Location = new System.Drawing.Point(72, 43);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 16);
+            this.label2.Size = new System.Drawing.Size(104, 21);
             this.label2.TabIndex = 0;
             this.label2.Text = "N° Destino";
             // 
@@ -224,9 +239,10 @@ namespace AerolineApp
             this.btModificar.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btModificar.Image = global::AerolineApp.Properties.Resources.ModificarIcon;
             this.btModificar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btModificar.Location = new System.Drawing.Point(280, 344);
+            this.btModificar.Location = new System.Drawing.Point(373, 423);
+            this.btModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btModificar.Name = "btModificar";
-            this.btModificar.Size = new System.Drawing.Size(109, 74);
+            this.btModificar.Size = new System.Drawing.Size(145, 91);
             this.btModificar.TabIndex = 8;
             this.btModificar.Text = "EDITAR";
             this.btModificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -244,9 +260,10 @@ namespace AerolineApp
             this.btmConfirmar.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btmConfirmar.Image = global::AerolineApp.Properties.Resources.GuardarIcon;
             this.btmConfirmar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btmConfirmar.Location = new System.Drawing.Point(425, 344);
+            this.btmConfirmar.Location = new System.Drawing.Point(567, 423);
+            this.btmConfirmar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btmConfirmar.Name = "btmConfirmar";
-            this.btmConfirmar.Size = new System.Drawing.Size(109, 74);
+            this.btmConfirmar.Size = new System.Drawing.Size(185, 91);
             this.btmConfirmar.TabIndex = 7;
             this.btmConfirmar.Text = "CONFIRMAR";
             this.btmConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -259,14 +276,16 @@ namespace AerolineApp
             // 
             // frmDestinoModificar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 457);
+            this.ClientSize = new System.Drawing.Size(1061, 562);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmDestinoModificar";
             this.Text = "frmDestinoModificar";
+            this.Load += new System.EventHandler(this.frmDestinoModificar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

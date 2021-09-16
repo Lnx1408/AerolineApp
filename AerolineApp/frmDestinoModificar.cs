@@ -95,5 +95,10 @@ namespace AerolineApp
                 MessageBox.Show("El archivo no es válido: " + ex);
             }
         }
+
+        private void frmDestinoModificar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
